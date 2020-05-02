@@ -8,8 +8,8 @@ body {
     background: #383b40;
     opacity: 65%;
     color: #fafafa;
-    /*transition: all .3s ease;*/
     font-family: "Roboto-Regular", sans-serif;
+    display: flex;
 }
 
 :focus {
@@ -51,6 +51,24 @@ aside {
 }
 
 
+.delete__list-icon {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: -30px;
+    transition: all .3s ease;
+}
+
+.delete__list-icon:hover {
+    fill: rgba(210,13,20,0.7);
+}
+
+.list__item:hover .delete__list-icon{
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+}
+
 .list__item-name {
     width: 100%;
     border: none;
@@ -59,6 +77,11 @@ aside {
     padding: 5px;
     cursor: pointer;
     font-size: 18px;
+    transition: all .3s ease;
+}
+
+.list__item:hover .list__item-name {
+    margin-left: 25px;
 }
 
 .list__item-name:focus {
@@ -82,4 +105,27 @@ aside {
     font-size: 18px;
     padding: 5px;
     margin: 5px;
+}
+
+main {
+    position: relative;
+    width: 80%;
+}
+
+.task__input-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.task__input {
+    position: absolute;
+    bottom: 0;
+    width: 92%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    background: none;
+    border: 1px solid #010101;
 }
