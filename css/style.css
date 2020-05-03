@@ -32,7 +32,6 @@ header {
     list-style: none;
     border-bottom: 3px solid #5e5e5e;
     padding: 5px;
-    display: none;
 }
 
 
@@ -192,10 +191,6 @@ main {
 }
 
 @media (max-width: 968px) {
-    header {
-        display: block;
-    }
-
     aside {
         display: none;
     }

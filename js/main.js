@@ -78,10 +78,13 @@ function openTasks() {
         aside.style.display = 'block'
         main.style.width = '80%'
         main.style.position = 'relative'
+        console.log('open')
     } else {
         aside.style.display = 'none'
         main.style.width = '100%'
         main.style.position = 'absolute'
+        main.style.bottom = '0%'
+        console.log('close')
     }
     
 }
