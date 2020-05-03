@@ -112,7 +112,11 @@ main {
     width: 80%;
 }
 
-.task__input-wrapper {
+.task__items-wrap {
+    margin: 20px 40px;
+}
+
+.task__input-wrap {
     width: 100%;
     display: flex;
     justify-content: center;
