@@ -13,6 +13,7 @@ body {
 
 .app {
     display: flex;
+    height: calc(100vh - 63px);
 }
 
 :focus {
@@ -26,13 +27,11 @@ a {
 }
 /* HEADER */
 header {
-    top: 0%;
     background: #383b40;
     width: 100%;
     list-style: none;
     border-bottom: 3px solid #5e5e5e;
     padding: 5px;
-    display: none;
 }
 
 
@@ -87,7 +86,6 @@ aside {
     width: 20%;
     padding: 15px;
     background: #2d2f34;
-    min-height: 100vh;
 }
 
 .list__items-wrap {
@@ -192,10 +190,6 @@ main {
 }
 
 @media (max-width: 968px) {
-    header {
-        display: block;
-    }
-
     aside {
         display: none;
     }
