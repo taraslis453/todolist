@@ -10,19 +10,34 @@
 	<link rel="stylesheet" href="css/font.css">
 </head>
 <body>
-	<aside>
-		<div class="list__items-wrap">
-			<div class="list__items">
-
+	<header>
+		<ul class="header__content">
+			<li>
+				<a href="#" class="menu__btn" onclick="openTasks()">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				To-Do App
+			</li>
+			<li>Some icon</li>
+		</ul>
+	</header>
+	<div class='app'>
+		<aside>
+			<div class="list__items-wrap">
+				<div class="list__items">
+	
+				</div>
 			</div>
-		</div>
-		<button onclick="createListDiv()" class="create__list-btn">Создать список</button>
-	</aside>
-	<main>
-		<div class="task__input-wrapper">
-			<input placeholder="Добавить задачу" type="text" class="task__input">
-		</div>
-	</main>
+			<button onclick="createListDiv()" class="create__list-btn">Создать список</button>
+		</aside>
+		<main>
+			<div class="task__input-wrapper">
+				<input placeholder="Добавить задачу" type="text" class="task__input">
+			</div>
+		</main>
+	</div>
 <!--	<script src="js/jquery-3.5.0.min.js"></script>-->
 	<script src="js/main.js"></script>
 </body>

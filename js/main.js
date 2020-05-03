@@ -55,3 +55,19 @@ listListeners();
 function saveToStorage() {
     localStorage.setItem('todoList',listItems.innerHTML);
 }
+
+function openTasks() {
+    const aside = document.querySelector('aside')
+    const main = document.querySelector('main')
+
+    if(aside.style.display === 'none') {
+        aside.style.display = 'block'
+        main.style.width = '80%'
+        main.style.position = 'relative'
+    } else {
+        aside.style.display = 'none'
+        main.style.width = '100%'
+        main.style.position = 'absolute'
+    }
+    
+}
