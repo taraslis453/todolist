@@ -26,7 +26,7 @@ function selectLastListDiv() {
 }
 
 function createPersonalName(e) {
-    e.id = `ltm_${listCount + randomNum}`;
+    e.id = `ltm_${listCount}`;
     listCount++;
     localStorage.setItem('listCount', listCount);
 }
