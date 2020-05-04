@@ -23,7 +23,7 @@ function selectLastListDiv() {
 }
 function createPersonalName(e) {
     let randomCharacters = Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4);
-    let personalName = `ltm_${randomCharacters}`
+    let personalName = `ltm_${randomCharacters}`;
     e.classList.add(personalName);
     let taskDiv = document.createElement('div');
     taskDiv.classList.add('task__item', personalName);
@@ -46,7 +46,7 @@ function listListeners() {
             }
 
             let listItemPersonalName =  e.target.parentNode.classList[1];
-            taskItems.getElementsByClassName(`${listItemPersonalName}`)[0].style.display = 'block';
+            // taskItems.getElementsByClassName(`${listItemPersonalName}`)[0].style.display = 'block';
         })
 
         listItemInputs[i].addEventListener('dblclick', () => {
