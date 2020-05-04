@@ -125,7 +125,13 @@ function openTasks() {
 }
 // MODAL 
 class Modal {
-    constructor() {
+    constructor(params) {
+        this.header = params.header
+        this.body = params.body
+        this.footer = params.footer
+        this.background = params.background
+        this.class = params.class || ''
+
         this.createModal()
         document.addEventListener('DOMContentLoaded', () => {
             if(!localStorage.getItem('isShowedModal')) {
@@ -147,25 +153,33 @@ class Modal {
         <div class="modal__overlay">
             <div class="modal__content">
                 <div class="modal__header">
-                    <h1>Welcome</h1>
+                    <h1>${this.header}</h1>
                     <p class="modal__close__btn">&times;</p>
                 </div>
                 <div class="modal__body">
-                    <p>Lorem ipsum dolor sit elit. Earum harum error possimus, maxime qui porro atque</p>
+                    <p>${this.body}</p>
                 </div>
                 <div class="modal__footer">
-                    <small>By Artyom&Taras</small>
+                    <small>${this.footer}</small>
                 </div>
             </div>
         </div>
         `)
         document.body.insertAdjacentElement('afterbegin', $modal)
+        document.querySelector(".modal__content").style.background = this.background
+        if(this.class) {
+            document.querySelector(".modal__content").classList.add(this.class)
+        }
     }
     
     close() {
-        setTimeout(() => {document.querySelector('.modal__content').style.transform = 'translateY(-300%) translateX(-50%)'}, 100)
-        document.querySelector('.modal').classList.remove('open')
-        localStorage.setItem('isShowedModal', true)
+        if(this.class) {
+            document.querySelector('body').removeChild(document.querySelector('.modal'))
+        } else {
+            setTimeout(() => {document.querySelector('.modal__content').style.transform = 'translateY(-300%) translateX(-50%)'}, 100)
+            document.querySelector('.modal').classList.remove('open')
+            localStorage.setItem('isShowedModal', true)
+        }
     }
     
     open() {
@@ -174,4 +188,30 @@ class Modal {
     }
 }
 
-const modal = new Modal()
+const modal = new Modal({
+    header: 'JSWelcome',
+    body: 'Hello to the todo. Here u can plan your day and anything more...',
+    footer: 'By Artyom&Taras',
+    background: '#fff',
+})
+
+// SETTINGS
+
+document.querySelector('.fa-ellipsis-v').addEventListener('click', e => {
+    const settings = new Modal({
+        header: 'Settings',
+        body: `<ul>
+            <li><a>Change settings</a></li>
+            <li><a>Choose language</a></li>
+            <li><a>Download on mobile</a></li>
+            <li><a>Something more</a></li>
+        </ul>`,
+        footer: 'Find bug? Tell us email@example.com',
+        background: 'lightblue',
+        class: 'settings',
+    })
+
+
+
+    settings.open()
+})
