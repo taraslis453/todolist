@@ -170,6 +170,10 @@ main {
     margin: 20px 40px;
 }
 
+.task__item {
+    display: none;
+}
+
 .task__input-wrap {
     width: 100%;
     display: flex;

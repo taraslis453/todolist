@@ -1,10 +1,7 @@
-let listItems = document.querySelector('.list__items');
+const listItems = document.querySelector('.list__items');
 listItems.innerHTML = localStorage.getItem('todoList');
 
-if(localStorage.getItem('listCount') === null) {
-    localStorage.setItem('listCount', 1);
-}
-let listCount = localStorage.getItem('listCount');
+const taskItems = document.querySelector('.task__items');
 
 function createListDiv() {
     let listDiv = document.createElement("div");
@@ -24,17 +21,33 @@ function selectLastListDiv() {
     let lastListDiv = document.querySelector('.list__items .list__item:last-child input');
     lastListDiv.select();
 }
-
 function createPersonalName(e) {
-    e.id = `ltm_${listCount}`;
-    listCount++;
-    localStorage.setItem('listCount', listCount);
+    let randomCharacters = Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4);
+    let personalName = `ltm_${randomCharacters}`
+    e.classList.add(personalName);
+    let taskDiv = document.createElement('div');
+    taskDiv.classList.add('task__item', personalName);
+    taskDiv.innerHTML = "test";
+    taskItems.append(taskDiv);
 }
 
 function listListeners() {
+    let listItemsChildren = document.querySelectorAll('.list__item')
     let listItemInputs = document.querySelectorAll('.list__item input');
     let deleteListBtn = document.querySelectorAll('.delete__list-icon');
+    let taskItemsChildren = document.querySelectorAll('.task__item')
+
     for(let i = 0; i < listItemInputs.length; i++) {
+
+        listItemsChildren[i].addEventListener('click', e => {
+
+            for(let a = 0; a < taskItemsChildren.length; a++) {
+                taskItemsChildren[a].style.display = 'none';
+            }
+
+            let listItemPersonalName =  e.target.parentNode.classList[1];
+            taskItems.getElementsByClassName(`${listItemPersonalName}`)[0].style.display = 'block';
+        })
 
         listItemInputs[i].addEventListener('dblclick', () => {
             listItemInputs[i].readOnly = false;
@@ -57,12 +70,11 @@ function listListeners() {
 
         deleteListBtn[i].onclick = () =>{
             deleteListBtn[i].parentNode.remove();
-            listCount--;
-            localStorage.setItem('listCount', listCount);
             saveToStorage();
         }
     }
 }
+
 
 listListeners();
 
