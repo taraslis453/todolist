@@ -76,15 +76,57 @@ function openTasks() {
 
     if(aside.style.display === 'none') {
         aside.style.display = 'block'
-        main.style.width = '80%'
         main.style.position = 'relative'
-        console.log('open')
+        main.style.background = 'rgba(0, 0, 0, .6)'
     } else {
         aside.style.display = 'none'
-        main.style.width = '100%'
         main.style.position = 'absolute'
         main.style.bottom = '0%'
-        console.log('close')
     }
     
 }
+
+class Modal {
+    constructor() {
+        this.createModal()
+        document.addEventListener('DOMContentLoaded', () => this.open())
+        document.addEventListener('click', e => {
+            if (e.target.className == 'modal__overlay') {
+                this.close()
+            }
+        })
+    }
+
+    createModal() {
+        const $modal = document.createElement('div')
+        $modal.classList.add('modal')
+        $modal.insertAdjacentHTML('afterbegin', `
+        <div class="modal__overlay">
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h1>Welcome</h1>
+                </div>
+                <div class="modal__body">
+                    <p>Lorem ipsum dolor sit elit. Earum harum error possimus, maxime qui porro atque</p>
+                </div>
+                <div class="modal__footer">
+                    <small>By Artyom&Taras</small>
+                </div>
+            </div>
+        </div>
+        `)
+        document.body.insertAdjacentElement('afterbegin', $modal)
+    }
+    
+    close() {
+        setTimeout(() => {document.querySelector('.modal__content').style.transform = 'translateY(-300%) translateX(-50%)'}, 100)
+        document.querySelector('.modal').classList.remove('open')
+    }
+    
+    open() {
+        setTimeout(() => {document.querySelector('.modal__content').style.transform = 'translateY(-50%) translateX(-50%)'}, 100)
+        document.querySelector('.modal').classList.add('open')
+    }
+}
+
+const modal = new Modal()
