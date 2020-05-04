@@ -330,9 +330,11 @@ main {
     .settings .modal__header .modal__close__btn {
         font-size: 1.6rem;
     }
+
 }
 
 @media (max-width: 576px) {
+
     .d-mob-none {
         display: none;
     }
@@ -347,6 +349,10 @@ main {
     main {
         width: 100%;
         bottom: 0;
+    }
+
+    .task__input-wrap {
+        margin-bottom: 95px;
     }
 
     .menu__btn {

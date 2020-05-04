@@ -39,7 +39,7 @@ function createPersonalName(e) {
     for(let a = 0; a < taskItemsChildren.length; a++) {
         taskItemsChildren[a].style.display = 'none';
     }
-    taskItems.getElementsByClassName(`${personalName}`)[0].style.display = 'block';
+    taskItems.querySelector('.' + personalName).style.display = 'block';
 
     localStorage.setItem('listSelectedName', personalName);
     saveToStorage();
@@ -58,7 +58,7 @@ function listen() {
                 taskItemsChildren[a].style.display = 'none';
             }
             listItemPersonalName =  e.target.parentNode.classList[1];
-            taskItems.getElementsByClassName(`${listItemPersonalName}`)[0].style.display = 'block';
+            taskItems.querySelector('.' + listItemPersonalName).style.display = 'block';
             localStorage.setItem('listSelectedName', listItemPersonalName);
             saveToStorage();
         })
