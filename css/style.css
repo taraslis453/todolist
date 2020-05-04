@@ -283,6 +283,7 @@ main {
         width: 100%;
         position: absolute;
         z-index: 11;
+        border: none;
     }
 
     main {
