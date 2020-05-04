@@ -26,6 +26,7 @@ body {
 a {
     text-decoration: none !important;
 }
+
 /* HEADER */
 header {
     background: #383b40;
@@ -85,13 +86,12 @@ header {
 }
 
 aside {
-    width: 25%;
+    display: table;
     padding: 15px;
     background: #2d2f34;
     overflow-x: auto;
     transition: ease-out .1s;
-    position: absolute;
-    min-height: calc(100vh - 63px);
+    height: calc(100vh - 63px);
     z-index: 1;
     border-right: 3px solid #5e5e5e;
 }
@@ -140,6 +140,7 @@ aside {
     cursor: pointer;
     font-size: 18px;
     transition: all .3s ease;
+    margin-left: 25px;
 }
 
 .list__item:hover .list__item-name {
@@ -152,28 +153,26 @@ aside {
 
 
 .list__item-count {
-    position: absolute;
-    right: 5px;
-    top: 4px;
     font-size: 18px;
+    margin: 5px;
 }
 
 .create__list-btn {
     border: none;
-    color: #fafafa;
     background: none;
     color: gray;
     cursor: pointer;
     font-size: 18px;
     padding: 5px;
     margin: 5px;
+    width: 275px;
+    text-align: left;
 }
 
 main {
     position: relative;
     width: 100%;
     transition: ease-out .1s;
-    background-color: rgba(0, 0, 0, .8);
 }
 
 .task__items-wrap {
@@ -229,7 +228,6 @@ main {
     font-size: 1.6rem;
     padding: 10px;
     transition: ease-in-out .3s;
-
 }
 
 .modal__header {
@@ -257,22 +255,8 @@ main {
 .open {
     display: block;
 }
-@media (max-width: 968px) {
-    aside {
-        display: none;
-        width: 100%;
-    }
-    
-    main {
-        width: 100%;
-        bottom: 0;
-        position: absolute;
-    }
 
-    .menu__btn {
-        visibility: visible;
-    }
-
+@media (max-width: 992px) {
     .modal__header {
         font-size: 1rem;
         text-align: center;
@@ -288,3 +272,25 @@ main {
         width: 80%;
     }
 }
+
+@media (max-width: 576px) {
+    .d-mob-none {
+        display: none;
+    }
+
+    aside {
+        width: 100%;
+        position: absolute;
+        z-index: 11;
+    }
+
+    main {
+        width: 100%;
+        bottom: 0;
+    }
+
+    .menu__btn {
+        visibility: visible;
+    }
+}
+

@@ -82,20 +82,15 @@ function saveToStorage() {
     localStorage.setItem('todoList',listItems.innerHTML);
 }
 
+const aside = document.querySelector('aside')
+const main = document.querySelector('main')
 function openTasks() {
-    const aside = document.querySelector('aside')
-    const main = document.querySelector('main')
-
-    if(aside.style.display === 'none') {
-        aside.style.display = 'block'
-        main.style.position = 'relative'
-        main.style.background = '#383b40;'
+    if(aside.classList.contains('d-mob-none')) {
+        aside.classList.remove('d-mob-none');
     } else {
-        aside.style.display = 'none'
-        main.style.position = 'absolute'
-        main.style.bottom = '0%'
+        aside.classList.add('d-mob-none')
     }
-    
+
 }
 // MODAL 
 class Modal {
@@ -108,7 +103,7 @@ class Modal {
             }
         })
         document.addEventListener('click', e => {
-            if (e.target.className == 'modal__overlay' || e.target.className == 'modal__close__btn') {
+            if (e.target.className === 'modal__overlay' || e.target.className === 'modal__close__btn') {
                 this.close()
             }
         })
