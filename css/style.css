@@ -15,7 +15,7 @@ body {
 
 .app {
     display: flex;
-    height: calc(100vh - 63px);
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 :focus {
@@ -192,7 +192,7 @@ main {
 
 .task__input {
     position: absolute;
-    bottom: 0;
+    bottom: 63px;
     width: 92%;
     margin-bottom: 10px;
     border-radius: 5px;
