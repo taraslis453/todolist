@@ -1,3 +1,8 @@
+window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
 const listItems = document.querySelector('.list__items');
 listItems.innerHTML = localStorage.getItem('todoList');
 
@@ -16,11 +21,6 @@ function createListDiv() {
     selectLastListDiv();
     saveToStorage();
 }
-
-// window.addEventListener('resize', () => {
-//     let vh = window.innerHeight * 0.01;
-//     document.documentElement.style.setProperty('--vh', `${vh}px`);
-// });
 
 function selectLastListDiv() {
     let lastListDiv = document.querySelector('.list__items .list__item:last-child input');
