@@ -15,7 +15,7 @@ body {
 
 .app {
     display: flex;
-    min-height: calc(100vh - 63px);
+    height: calc(100vh - 63px);
 }
 
 :focus {
