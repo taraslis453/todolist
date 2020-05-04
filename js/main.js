@@ -3,12 +3,6 @@ listItems.innerHTML = localStorage.getItem('todoList');
 
 const taskItems = document.querySelector('.task__items');
 
-window.addEventListener('resize', () => {
-    // We execute the same script as before
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-});
-
 function createListDiv() {
     let listDiv = document.createElement("div");
     listDiv.className = 'list__item';
