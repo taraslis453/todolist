@@ -277,7 +277,8 @@ main {
 
 /* SETTINGS */
 
-.settings {
+.settings,
+.theme {
     height: 60%;
     border-radius: 5px;
     color: #000;
@@ -287,20 +288,67 @@ main {
     margin: 2rem 3rem;
 }
 
-.settings .modal__body ul {
+.settings .modal__body ul,
+.theme .modal__body ul {
     list-style: none;
 
 }
 
-.settings .modal__body li {
+.settings .modal__body li,
+.theme .modal__body li {
     margin-bottom: 15px;
     text-decoration: underline;
     cursor: pointer;
 }
 
-.settings .modal__footer {
+.settings .modal__footer,
+.theme .modal__footer {
     font-size: 1.1rem;
     cursor: pointer;
+}
+
+/* THEME */
+
+.theme .modal__header h1 ul{
+    font-size: 2rem;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.theme .modal__header h1 ul li {
+    margin-right: 15px;
+}
+
+.theme .modal__header h1 ul li:first-child {
+    cursor: pointer;
+}
+
+.choose {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.choose__color {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px;
+}
+.white {
+    background: white
+}
+.green {
+    background: green
+}
+.black {
+    background: black
+}
+.blue {
+    background: blue;;
 }
 
 /* ADAPТИВНОСТЬ */

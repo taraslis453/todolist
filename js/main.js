@@ -123,7 +123,7 @@ class Modal {
     constructor(params) {
         this.header = params.header
         this.body = params.body
-        this.footer = params.footer
+        this.footer = params.footer || ''
         this.background = params.background
         this.class = params.class || ''
 
@@ -191,22 +191,56 @@ const modal = new Modal({
 })
 
 // SETTINGS
+document.addEventListener('click', e => {
+    // IF USER CLICKED ON SETTING-BTN
+    if(e.target.classList.contains('fa-ellipsis-v')) {
+        const settings = new Modal({
+            header: 'Settings',
+            body: `<ul>
+                <li><a class="changeBtn">Change theme</a></li>
+                <li><a>Choose language</a></li>
+                <li><a>Download on mobile</a></li>
+            </ul>`,
+            // footer: 'Find bug? Tell us email@example.com',
+            background: 'lightblue',
+            class: 'settings',
+        })
+        settings.open()
+    } else if(e.target.classList.contains('changeBtn')) {
+    // IF USER CLICKED ON CHANGE-BTN
+        document.querySelector('body').removeChild(document.querySelector('.modal'))
 
-document.querySelector('.fa-ellipsis-v').addEventListener('click', e => {
-    const settings = new Modal({
-        header: 'Settings',
-        body: `<ul>
-            <li><a>Change settings</a></li>
-            <li><a>Choose language</a></li>
-            <li><a>Download on mobile</a></li>
-            <li><a>Something more</a></li>
-        </ul>`,
-        footer: 'Find bug? Tell us email@example.com',
-        background: 'lightblue',
-        class: 'settings',
-    })
+        const theme = new Modal({
+            header: `<ul>
+                        <li class="settings__close">&larr;</li>
+                        <li>Choose theme</li>
+                    </ul>`,
+            body: `<ul>
+                <li class="choose"><div class="blue choose__color"></div><p>color</p></li>
+                <li class="choose"><div class="white choose__color"></div><p>color</p></li>
+                <li class="choose"><div class="black choose__color"></div><p>color</p></li>
+                <li class="choose"><div class="green choose__color"></div><p>color</p></li>
+            </ul>`,
+            // footer: 'Find bug? Tell us email@example.com',
+            background: 'lightblue',
+            class: 'theme',
+        })
 
+        theme.open()
+    } else if(e.target.classList.contains('settings__close')) {
+        document.querySelector('body').removeChild(document.querySelector('.modal'))
+        const settings = new Modal({
+            header: 'Settings',
+            body: `<ul>
+                <li><a class="changeBtn">Change settings</a></li>
+                <li><a>Choose language</a></li>
+                <li><a>Download on mobile</a></li>
+            </ul>`,
+            // footer: 'Find bug? Tell us email@example.com',
+            background: 'lightblue',
+            class: 'settings',
+        })
+        settings.open()
+    }
 
-
-    settings.open()
 })
