@@ -85,7 +85,7 @@ function openTasks() {
     }
     
 }
-
+// MODAL 
 class Modal {
     constructor() {
         this.createModal()
@@ -96,7 +96,7 @@ class Modal {
             }
         })
         document.addEventListener('click', e => {
-            if (e.target.className == 'modal__overlay') {
+            if (e.target.className == 'modal__overlay' || e.target.className == 'modal__close__btn') {
                 this.close()
             }
         })
@@ -110,6 +110,7 @@ class Modal {
             <div class="modal__content">
                 <div class="modal__header">
                     <h1>Welcome</h1>
+                    <p class="modal__close__btn">&times;</p>
                 </div>
                 <div class="modal__body">
                     <p>Lorem ipsum dolor sit elit. Earum harum error possimus, maxime qui porro atque</p>
