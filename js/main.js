@@ -89,7 +89,12 @@ function openTasks() {
 class Modal {
     constructor() {
         this.createModal()
-        document.addEventListener('DOMContentLoaded', () => this.open())
+        document.addEventListener('DOMContentLoaded', () => {
+            if(!localStorage.getItem('isShowedModal')) {
+                this.open()
+            } else {
+            }
+        })
         document.addEventListener('click', e => {
             if (e.target.className == 'modal__overlay') {
                 this.close()
@@ -121,6 +126,7 @@ class Modal {
     close() {
         setTimeout(() => {document.querySelector('.modal__content').style.transform = 'translateY(-300%) translateX(-50%)'}, 100)
         document.querySelector('.modal').classList.remove('open')
+        localStorage.setItem('isShowedModal', true)
     }
     
     open() {
