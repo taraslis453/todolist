@@ -77,7 +77,7 @@ function openTasks() {
     if(aside.style.display === 'none') {
         aside.style.display = 'block'
         main.style.position = 'relative'
-        main.style.background = 'rgba(0, 0, 0, .6)'
+        main.style.background = '#383b40;'
     } else {
         aside.style.display = 'none'
         main.style.position = 'absolute'
