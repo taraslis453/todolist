@@ -124,7 +124,6 @@ aside {
     opacity: 75%;
 }
 
-
 .delete__list-icon {
     visibility: hidden;
     opacity: 0;
@@ -164,7 +163,6 @@ aside {
     background: #383b40;
 }
 
-
 .list__item-count {
     font-size: 18px;
     padding: 5px;
@@ -186,13 +184,10 @@ main {
     position: relative;
     width: 100%;
     transition: ease-out .1s;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.task__items-wrap {
-    margin: 20px 40px;
 }
 
 .task__item {
@@ -214,18 +209,17 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 65px;
 }
 
 .task__input {
-    width: 92%;
-    margin-bottom: 75px;
+    width: 100%;
     border-radius: 10px;
     padding: 10px;
     font-size: 20px;
     background: #222221;
     border: 1px solid #010101;
     color: #fafafa;
-    z-index: 10;
 }
 
 /* ----------------MODAL----------------- */
