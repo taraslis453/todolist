@@ -51,7 +51,8 @@ header {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    position: relative
+    position: relative;
+    visibility: hidden;
 }
 /* BURGER MENU BUTTON */
 .menu__btn span::after,
@@ -92,7 +93,7 @@ aside {
     position: absolute;
     min-height: calc(100vh - 63px);
     z-index: 1;
-    display: none;
+    border-right: 3px solid #5e5e5e;
 }
 
 .list__items-wrap {
@@ -172,6 +173,7 @@ main {
     position: relative;
     width: 100%;
     transition: ease-out .1s;
+    background-color: rgba(0, 0, 0, .8);
 }
 
 .task__items-wrap {
@@ -200,7 +202,7 @@ main {
     border: 1px solid #010101;
     color: #fafafa;
     box-shadow: black;
-    z-index: 5
+    z-index: 10;
 }
 
 /* ----------------MODAL----------------- */
@@ -230,8 +232,18 @@ main {
 
 }
 
+.modal__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.modal__close__btn {
+    cursor: pointer;
+}
+
 .modal__body {
-    margin: 4rem;
+    margin: 2rem 4rem 4rem;
     
 }
 
@@ -248,12 +260,17 @@ main {
 @media (max-width: 968px) {
     aside {
         display: none;
+        width: 100%;
     }
     
     main {
         width: 100%;
         bottom: 0;
         position: absolute;
+    }
+
+    .menu__btn {
+        visibility: visible;
     }
 
     .modal__header {
@@ -268,5 +285,6 @@ main {
 
     .modal__content {
         font-size: 1.3rem;
+        width: 80%;
     }
 }
