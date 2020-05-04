@@ -15,7 +15,8 @@ body {
 
 .app {
     display: flex;
-    height: calc(var(--vh, 1vh) * 100);
+    /*height: calc(var(--vh, 1vh) * 100);*/
+    height: 100vh;
 }
 
 :focus {
@@ -50,7 +51,6 @@ header {
     justify-content: space-between;
     align-items: center;
     font-size: 1.3rem;
-
 }
 
 .menu__btn {
@@ -125,6 +125,7 @@ aside {
     position: absolute;
     left: -30px;
     transition: all .3s ease;
+    height: 100%;
 }
 
 .delete__list-icon:hover {
@@ -160,7 +161,7 @@ aside {
 
 .list__item-count {
     font-size: 18px;
-    margin: 5px;
+    padding: 5px;
 }
 
 .create__list-btn {
@@ -179,6 +180,9 @@ main {
     position: relative;
     width: 100%;
     transition: ease-out .1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .task__items-wrap {
@@ -189,6 +193,17 @@ main {
     display: none;
 }
 
+.task {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    background: #222221;
+    border: 1px solid #010101;
+    color: #fafafa;
+    margin-bottom: 15px;
+}
+
 .task__input-wrap {
     width: 100%;
     display: flex;
@@ -196,17 +211,14 @@ main {
 }
 
 .task__input {
-    position: absolute;
-    bottom: 63px;
     width: 92%;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin-bottom: 75px;
+    border-radius: 10px;
     padding: 10px;
     font-size: 20px;
     background: #222221;
     border: 1px solid #010101;
     color: #fafafa;
-    box-shadow: black;
     z-index: 10;
 }
 

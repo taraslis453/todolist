@@ -1,12 +1,13 @@
-window.addEventListener('resize', () => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-});
+// window.addEventListener('resize', () => {
+//     let vh = window.innerHeight * 0.01;
+//     document.documentElement.style.setProperty('--vh', `${vh}px`);
+// });
 
 const listItems = document.querySelector('.list__items');
 listItems.innerHTML = localStorage.getItem('todoList');
 
 const taskItems = document.querySelector('.task__items');
+taskItems.innerHTML = localStorage.getItem('taskList');
 
 function createListDiv() {
     let listDiv = document.createElement("div");
@@ -17,7 +18,7 @@ function createListDiv() {
         <input type="text" class="list__item-name" value="Список без названия">
         <div class="list__item-count">${1}</div>`;
     listItems.append(listDiv);
-    listListeners();
+    listen();
     selectLastListDiv();
     saveToStorage();
 }
@@ -26,32 +27,40 @@ function selectLastListDiv() {
     let lastListDiv = document.querySelector('.list__items .list__item:last-child input');
     lastListDiv.select();
 }
+
 function createPersonalName(e) {
     let randomCharacters = Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4);
     let personalName = `ltm_${randomCharacters}`;
     e.classList.add(personalName);
     let taskDiv = document.createElement('div');
     taskDiv.classList.add('task__item', personalName);
-    taskDiv.innerHTML = "test";
     taskItems.append(taskDiv);
+
+    for(let a = 0; a < taskItemsChildren.length; a++) {
+        taskItemsChildren[a].style.display = 'none';
+    }
+    taskItems.getElementsByClassName(`${personalName}`)[0].style.display = 'block';
+
+    localStorage.setItem('listSelectedName', personalName);
+    saveToStorage();
 }
 
-function listListeners() {
-    let listItemsChildren = document.querySelectorAll('.list__item')
+function listen() {
     let listItemInputs = document.querySelectorAll('.list__item input');
     let deleteListBtn = document.querySelectorAll('.delete__list-icon');
-    let taskItemsChildren = document.querySelectorAll('.task__item')
+    taskItemsChildren = document.querySelectorAll('.task__item')
+    let taskInput = document.querySelector('.task__input');
 
     for(let i = 0; i < listItemInputs.length; i++) {
 
-        listItemsChildren[i].addEventListener('click', e => {
-
+        listItemInputs[i].addEventListener('click', e => {
             for(let a = 0; a < taskItemsChildren.length; a++) {
                 taskItemsChildren[a].style.display = 'none';
             }
-
-            let listItemPersonalName =  e.target.parentNode.classList[1];
-            // taskItems.getElementsByClassName(`${listItemPersonalName}`)[0].style.display = 'block';
+            listItemPersonalName =  e.target.parentNode.classList[1];
+            taskItems.getElementsByClassName(`${listItemPersonalName}`)[0].style.display = 'block';
+            localStorage.setItem('listSelectedName', listItemPersonalName);
+            saveToStorage();
         })
 
         listItemInputs[i].addEventListener('dblclick', () => {
@@ -73,18 +82,35 @@ function listListeners() {
             saveToStorage();
         };
 
-        deleteListBtn[i].onclick = () =>{
+        deleteListBtn[i].onclick = () => {
             deleteListBtn[i].parentNode.remove();
+            taskItemsChildren[i].remove();
             saveToStorage();
+        }
+    }
+
+    taskInput.onkeyup = e => {
+        if(e.keyCode === 13) {
+            createTask(taskInput);
         }
     }
 }
 
+listen();
 
-listListeners();
+function createTask(e) {
+    listSelectedName = localStorage.getItem('listSelectedName');
+    task = document.createElement('input');
+    task.classList.add('task');
+    task.setAttribute('value', e.value);
+    taskItems.querySelector('.' + listSelectedName).append(task);
+    e.value = "";
+    saveToStorage();
+}
 
 function saveToStorage() {
     localStorage.setItem('todoList',listItems.innerHTML);
+    localStorage.setItem('taskList',taskItems.innerHTML);
 }
 
 const aside = document.querySelector('aside')
