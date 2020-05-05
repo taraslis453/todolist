@@ -144,3 +144,11 @@ function openTasks() {
     }
 
 }
+
+function openSettings() {
+    // REMOVE HIDE CLASS
+    const $modal = document.querySelector('.modal')
+    $modal.classList.remove('hide')
+
+
+}
