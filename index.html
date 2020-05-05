@@ -10,6 +10,68 @@
 	<link rel="stylesheet" href="css/font.css">
 </head>
 <body>
+	<!-- HELLO-MODAL -->
+	<div class="modal__greet disabled">
+		<div class="overlay">
+			<div class="modal__content">
+				<div class="modal__header">
+					<h1>Привет!</h1>
+				</div>
+				<div class="modal__body">
+					<p>Здесь ты можешь составить план на день!</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- SETTINGS-MODAL -->
+	<div class="modal hide">
+		<div class="overlay">
+			<!-- SETTINGS MAIN -->
+			<div class="modal-content-settings test">
+				<p class="closeBtn" data-close='true'>&times;</p>
+				<div class="settings__header">
+					<p>Settings</p>
+				</div>
+				<div class="line"></div>
+				<div class="settings__body">
+					<ul>
+						<li data-select="true">Select theme</li>
+						<li>Edit profile</li>
+						<li>Notifications</li>
+						<li>Language</li>
+						<li>Preferences</li>
+					</ul>
+				</div>
+				<div class="line"></div>
+				<div class="settings__footer">
+					<p>To-Do FAQ</p>
+				</div>
+			</div>
+			<!-- SETTINGS THEME SELECT -->
+			<div class="modal-content-theme disabled test">
+				<p class="closeBtn" data-close='true'>&times;</p>
+				<div class="settings__header">
+					<p>Theme</p>
+				</div>
+				<div class="line"></div>
+				<div class="settings__body">
+					<ul>
+						<li>Select theme</li>
+						<li>Edit profile</li>
+						<li>Notifications</li>
+						<li>Language</li>
+						<li>Preferences</li>
+					</ul>
+				</div>
+				<div class="line"></div>
+				<div class="settings__footer">
+					<p>To-Do FAQ</p>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+	<!-- HEADER -->
 	<header>
 		<ul class="header__content">
 			<li>
@@ -18,9 +80,14 @@
 				</a>
 			</li>
 			<li>To-Do App</li>
-			<li><i class="fas fa-ellipsis-v"></i></li>
+			<li>
+				<a class="settings__btn" onclick="openSettings()">
+					<span></span>
+				</a>
+			</li>
 		</ul>
 	</header>
+	<!-- APP CONTENT -->
 	<div class='app'>
 		<aside class="d-mob-none">
 			<div class="list__items-wrap">

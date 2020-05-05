@@ -11,6 +11,7 @@ body {
     font-family: "Roboto-Regular", sans-serif;
     height: 100vh;
     overflow: hidden;
+    min-height: 580px;
 }
 
 .app {
@@ -61,15 +62,22 @@ header {
     font-size: 1.3rem;
 }
 
-.menu__btn {
+/* BURGER MENU BUTTON */
+
+.menu__btn,
+.settings__btn {
     display: block;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     position: relative;
+    cursor: pointer;
+}
+
+.menu__btn {
     visibility: hidden;
 }
-/* BURGER MENU BUTTON */
+
 .menu__btn span::after,
 .menu__btn span::before {
     content: '';
@@ -92,6 +100,35 @@ header {
   .menu__btn span::after {
     transform: translateY(5px);
   }
+
+/* SETTINGS ICON */
+
+.settings__btn span::before,
+.settings__btn span::after {
+    content: '';
+    display: block;
+}
+
+.settings__btn span::before,
+.settings__btn span::after,
+.settings__btn span {
+    position: absolute;
+    top: 50%; margin-top: -4px;
+    left: 50%; margin-left: -4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #222;
+}
+
+.settings__btn span::before{
+    transform: translateY(11px);
+}
+
+.settings__btn span::after{
+    transform: translateY(-11px);
+}
+
 /* SOMETHING */
 
 .list__item {
@@ -238,12 +275,137 @@ main {
     color: #fafafa;
 }
 
+/* MODAL-GREET */
 
+.modal__greet {
+    display: flex;
+    transition: ease-in .3s;
+}
+
+.modal__greet .overlay {
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__greet .modal__content {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.modal__greet .modal__body {
+    margin-top: 1.6rem;
+}
+
+/* FOR JS */
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.disabled { 
+    display: none;
+}
+
+/* SETITNGS */
+
+.closeBtn {
+    display: flex;
+    float: right;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
+.line {
+    height: 10px;
+    background: #ccc;
+    width: 100%;
+}
+
+.modal {
+    transition: .2s ease-in-out;
+}
+
+.modal .overlay {
+    z-index: 12;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-settings,
+.modal-content-theme {
+    width: 25%;
+    background: white;  
+    border-radius: 5px;
+}
+
+.modal-content-settings .settings__header,
+.modal-content-theme .settings__header {
+    text-align: center;
+    font-size: 3rem;
+    color: #000;
+    padding: 10px;
+}
+
+.modal-content-settings .settings__body,
+.modal-content-theme .settings__body {
+    text-align: left;
+    font-size: 1.6rem;
+    color: #000;
+    padding: 30px;
+}
+
+.modal-content-settings .settings__body ul,
+.modal-content-theme .settings__body ul{
+    list-style: none;
+}
+
+.modal-content-settings .settings__body ul li,
+.modal-content-theme .settings__body ul li{
+    opacity: .85;
+    margin: 10px;
+    cursor: pointer
+}
+
+.modal-content-settings .settings__body ul li:hover {
+    opacity: 1;
+}
+
+.modal-content-settings .settings__footer,
+.modal-content-theme .settings__footer {
+    color: black;
+    font-size: 1.6rem;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content-settings .settings__footer p{
+    cursor: pointer;
+}
 
 /* ADAPТИВНОСТЬ */
 
 @media (max-width: 992px) {
-
+    .modal-content-settings {
+        width: 70%;
+    }
+    .modal-content-settings .settings__header {
+        font-size: 2.6rem;
+    }
 }
 
 @media (max-width: 576px) {
