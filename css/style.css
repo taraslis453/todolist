@@ -524,6 +524,15 @@ main {
     font-size: 1.3rem;
 }
 
+.backBtn {
+    display: flex;
+    float: left;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
 .line {
     height: 10px;
     background: #ccc;
@@ -602,10 +611,11 @@ main {
 /* ADAPТИВНОСТЬ */
 
 @media (max-width: 992px) {
-    .modal-content-settings {
+    .modal-content-settings, .modal-content-theme {
         width: 70%;
     }
-    .modal-content-settings .settings__header {
+    .modal-content-settings .settings__header,
+    .modal-content-theme .settings__header {
         font-size: 2.6rem;
     }
 }
