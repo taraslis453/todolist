@@ -4,6 +4,22 @@ listItems.innerHTML = localStorage.getItem('todoList');
 const taskItems = document.querySelector('.task__items');
 taskItems.innerHTML = localStorage.getItem('taskList');
 
+document.addEventListener('DOMContentLoaded', () => {
+    // CLOSE MODAl
+    if(!localStorage.getItem('isClosedGreet')) {
+        window.setTimeout(() => {
+            document.querySelector('.modal__greet').classList.add('hide')
+        }, 1000)
+        localStorage.setItem('isClosedGreet', true)
+    } else {
+        document.querySelector('.modal__greet').style.display = 'none'
+    }
+})
+
+document.addEventListener('click', e => {
+    
+})
+
 function createListDiv() {
     // Созданние списка и добавление в конец всех списков
     let listDiv = document.createElement("div");
@@ -49,7 +65,7 @@ function listen() {
     let deleteListBtn = document.querySelectorAll('.delete__list-icon');
     taskItemsChildren = document.querySelectorAll('.task__item')
     let taskInput = document.querySelector('.task__input');
-    // Так как у нас одинаковое количество инпутов, кнопок удалить этот инпут то это все мы помещаем в один цыкл
+    // Так как у нас одинаковое количество инпутов и кнопок удалить этот инпут то это все мы помещаем в один цыкл
     for(let i = 0; i < listItemInputs.length; i++) {
 
         listItemInputs[i].addEventListener('click', e => {
