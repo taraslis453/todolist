@@ -341,31 +341,36 @@ main {
     align-items: center;
 }
 
-.modal-content-settings {
+.modal-content-settings,
+.modal-content-theme {
     width: 25%;
     background: white;  
     border-radius: 5px;
 }
 
-.modal-content-settings .settings__header {
+.modal-content-settings .settings__header,
+.modal-content-theme .settings__header {
     text-align: center;
     font-size: 3rem;
     color: #000;
     padding: 10px;
 }
 
-.modal-content-settings .settings__body {
+.modal-content-settings .settings__body,
+.modal-content-theme .settings__body {
     text-align: left;
     font-size: 1.6rem;
     color: #000;
     padding: 30px;
 }
 
-.modal-content-settings .settings__body ul{
+.modal-content-settings .settings__body ul,
+.modal-content-theme .settings__body ul{
     list-style: none;
 }
 
-.modal-content-settings .settings__body ul li{
+.modal-content-settings .settings__body ul li,
+.modal-content-theme .settings__body ul li{
     opacity: .85;
     margin: 10px;
     cursor: pointer
@@ -375,12 +380,17 @@ main {
     opacity: 1;
 }
 
-.modal-content-settings .settings__footer {
+.modal-content-settings .settings__footer,
+.modal-content-theme .settings__footer {
     color: black;
     font-size: 1.6rem;
     padding: 10px;
     display: flex;
     justify-content: center;
+}
+
+.modal-content-settings .settings__footer p{
+    cursor: pointer;
 }
 
 /* ADAPТИВНОСТЬ */
