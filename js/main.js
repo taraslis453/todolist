@@ -5,6 +5,7 @@ const taskItems = document.querySelector('.task__items');
 taskItems.innerHTML = localStorage.getItem('taskList');
 
 function createListDiv() {
+    // Созданние списка и добавление в конец всех списков
     let listDiv = document.createElement("div");
     listDiv.className = 'list__item';
     createPersonalName(listDiv);
@@ -17,20 +18,23 @@ function createListDiv() {
     selectLastListDiv();
     saveToStorage();
 }
-
+// Выбрать последний созданный список чтобы выделить его для редактирования
 function selectLastListDiv() {
     let lastListDiv = document.querySelector('.list__items .list__item:last-child input');
     lastListDiv.select();
 }
 
 function createPersonalName(e) {
+    // создание рандомных симвлов для уникального именни
     let randomCharacters = Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4);
     let personalName = `ltm_${randomCharacters}`;
+    // Добавление этого именни к созданому диву
     e.classList.add(personalName);
+    // Создание списка и его соединение с блоком задач
     let taskDiv = document.createElement('div');
     taskDiv.classList.add('task__item', personalName);
     taskItems.append(taskDiv);
-
+    // Скрываем все блоки с задачами и показывем только выбранный
     for(let a = 0; a < taskItemsChildren.length; a++) {
         taskItemsChildren[a].style.display = 'none';
     }
@@ -45,7 +49,7 @@ function listen() {
     let deleteListBtn = document.querySelectorAll('.delete__list-icon');
     taskItemsChildren = document.querySelectorAll('.task__item')
     let taskInput = document.querySelector('.task__input');
-
+    // Так как у нас одинаковое количество инпутов, кнопок удалить этот инпут то это все мы помещаем в один цыкл
     for(let i = 0; i < listItemInputs.length; i++) {
 
         listItemInputs[i].addEventListener('click', e => {
@@ -94,15 +98,19 @@ function listen() {
 listen();
 
 function createTask(e) {
+    // Получаю список который выбран и передаю в инпут для добавление задач что бы он знал куда добавлять
     listSelectedName = localStorage.getItem('listSelectedName');
+    // Создание задачи с уникальным именем
     task = document.createElement('input');
     task.classList.add('task');
     task.setAttribute('value', e.value);
     taskItems.querySelector('.' + listSelectedName).append(task);
+    // Очистка инпута после добавление задачи
     e.value = "";
     saveToStorage();
 }
 
+// Сохранение всего чтобы осталось после перезагрузки страницы
 function saveToStorage() {
     localStorage.setItem('todoList',listItems.innerHTML);
     localStorage.setItem('taskList',taskItems.innerHTML);
