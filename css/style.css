@@ -57,15 +57,22 @@ header {
     font-size: 1.3rem;
 }
 
-.menu__btn {
+/* BURGER MENU BUTTON */
+
+.menu__btn,
+.settings__btn {
     display: block;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     position: relative;
+    cursor: pointer;
+}
+
+.menu__btn {
     visibility: hidden;
 }
-/* BURGER MENU BUTTON */
+
 .menu__btn span::after,
 .menu__btn span::before {
     content: '';
@@ -88,6 +95,35 @@ header {
   .menu__btn span::after {
     transform: translateY(5px);
   }
+
+/* SETTINGS ICON */
+
+.settings__btn span::before,
+.settings__btn span::after {
+    content: '';
+    display: block;
+}
+
+.settings__btn span::before,
+.settings__btn span::after,
+.settings__btn span {
+    position: absolute;
+    top: 50%; margin-top: -4px;
+    left: 50%; margin-left: -4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #222;
+}
+
+.settings__btn span::before{
+    transform: translateY(11px);
+}
+
+.settings__btn span::after{
+    transform: translateY(-11px);
+}
+
 /* SOMETHING */
 
 .list__item {

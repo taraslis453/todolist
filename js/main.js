@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             document.querySelector('.modal__greet').classList.add('hide')
             localStorage.setItem('isClosedGreet', true)
-        }, 1000)
+        }, 2000)
     }
 })
 
