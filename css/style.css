@@ -257,6 +257,10 @@ main {
     margin-bottom: 15px;
 }
 
+.task.wrong {
+    border: 1px solid red;
+}
+
 .task__input-wrap {
     width: 100%;
     display: flex;

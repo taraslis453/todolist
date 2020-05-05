@@ -129,6 +129,13 @@ function listen() {
         })
 
         allTasks[i].addEventListener('keyup', e => {
+            // Не даю вводить пустое значение
+            if(allTasks[i].value === ""){
+                allTasks[i].classList.add('wrong');
+                return false;
+            }else {
+                allTasks[i].classList.remove('wrong')
+            }
             if(e.keyCode === 13) {
                 allTasks[i].setAttribute('value', allTasks[i].value);
                 allTasks[i].blur();
@@ -138,9 +145,17 @@ function listen() {
         })
 
         allTasks[i].onblur = () => {
-            allTasks[i].setAttribute('value', allTasks[i].value);
-            allTasks[i].readOnly = true;
-            saveToStorage();
+            // Не даю вводить пустое значение
+            if(allTasks[i].value === ""){
+                allTasks[i].classList.add('wrong');
+                allTasks[i].focus();
+                return false;
+            }else {
+                allTasks[i].classList.remove('wrong')
+                allTasks[i].setAttribute('value', allTasks[i].value);
+                allTasks[i].readOnly = true;
+                saveToStorage();
+            }
         }
     }
 
