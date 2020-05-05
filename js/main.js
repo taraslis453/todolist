@@ -82,7 +82,6 @@ function listen() {
     }else {
         taskInput.classList.remove('d-none');
     }
-
     // Так как у нас одинаковое количество инпутов, кнопок удалить этот инпут то это все мы помещаем в один цыкл
     for(let i = 0; i < listItemInputs.length; i++) {
 
@@ -115,6 +114,7 @@ function listen() {
             saveToStorage();
         };
 
+
         deleteListBtn[i].onclick = () => {
             deleteListBtn[i].parentNode.remove();
             taskItemsChildren[i].remove();
@@ -122,23 +122,58 @@ function listen() {
             saveToStorage();
         }
     }
+    let allTasks = document.querySelectorAll('.task')
+    for(let i = 0; i < allTasks.length; i++) {
+        allTasks[i].addEventListener('dblclick', () => {
+            allTasks[i].readOnly = false;
+        })
+
+        allTasks[i].addEventListener('keyup', e => {
+            if(e.keyCode === 13) {
+                allTasks[i].setAttribute('value', allTasks[i].value);
+                allTasks[i].blur();
+                allTasks[i].readOnly = true;
+                saveToStorage();
+            }
+        })
+
+        allTasks[i].onblur = () => {
+            allTasks[i].setAttribute('value', allTasks[i].value);
+            allTasks[i].readOnly = true;
+            saveToStorage();
+        }
+    }
 
     taskInput.onkeyup = e => {
         if(e.keyCode === 13) {
             createTask(taskInput);
+            listen();
         }
     }
+    taskInput.addEventListener('keyup', e => {
+        if(e.keyCode !== 13) {
+            taskInput.classList.remove('wrong');
+        }
+    })
 }
 
 listen();
 
 function createTask(e) {
+    // Не даю вводить пустое значение
+    if(e.value === ""){
+        e.classList.add('wrong');
+        return false;
+    }else {
+        e.classList.remove('wrong')
+    }
     // Получаю список который выбран и передаю в инпут для добавление задач что бы он знал куда добавлять
     listSelectedName = localStorage.getItem('listSelectedName');
     // Создание задачи с уникальным именем
     task = document.createElement('input');
     task.classList.add('task');
     task.setAttribute('value', e.value);
+    task.readOnly = true;
     taskItems.querySelector('.' + listSelectedName).append(task);
     // Очистка инпута после добавление задачи
     e.value = "";

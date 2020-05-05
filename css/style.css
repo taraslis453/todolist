@@ -273,6 +273,11 @@ main {
     background: #222221;
     border: 1px solid #010101;
     color: #fafafa;
+    transition: all .3s ease;
+}
+
+.task__input.wrong {
+    border: 1px solid red;
 }
 
 /* MODAL-GREET */
