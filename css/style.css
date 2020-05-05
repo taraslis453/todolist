@@ -32,6 +32,10 @@ button {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.d-none {
+    display: none;
+}
+
 /* HEADER */
 header {
     background: #383b40;

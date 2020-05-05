@@ -4,6 +4,7 @@ listItems.innerHTML = localStorage.getItem('todoList');
 const taskItems = document.querySelector('.task__items');
 taskItems.innerHTML = localStorage.getItem('taskList');
 
+const taskInput = document.querySelector('.task__input');
 function createListDiv() {
     // Созданние списка и добавление в конец всех списков
     let listDiv = document.createElement("div");
@@ -47,8 +48,14 @@ function createPersonalName(e) {
 function listen() {
     let listItemInputs = document.querySelectorAll('.list__item input');
     let deleteListBtn = document.querySelectorAll('.delete__list-icon');
-    taskItemsChildren = document.querySelectorAll('.task__item')
-    let taskInput = document.querySelector('.task__input');
+    taskItemsChildren = document.querySelectorAll('.task__item');
+    // Если нет списков то не показыть поле добавить задачу
+    if(listItemInputs.length === 0) {
+        taskInput.classList.add('d-none')
+    }else {
+        taskInput.classList.remove('d-none');
+    }
+
     // Так как у нас одинаковое количество инпутов, кнопок удалить этот инпут то это все мы помещаем в один цыкл
     for(let i = 0; i < listItemInputs.length; i++) {
 
@@ -84,6 +91,7 @@ function listen() {
         deleteListBtn[i].onclick = () => {
             deleteListBtn[i].parentNode.remove();
             taskItemsChildren[i].remove();
+            listen();
             saveToStorage();
         }
     }
