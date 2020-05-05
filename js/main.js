@@ -168,9 +168,9 @@ class Modal {
     }
     
     close() {
-        if(this.class) {
+        if(this.class && document.querySelector('.modal') ) {
             document.querySelector('body').removeChild(document.querySelector('.modal'))
-        } else {
+        } else if(document.querySelector('.modal')) {
             setTimeout(() => {document.querySelector('.modal__content').style.transform = 'translateY(-300%) translateX(-50%)'}, 100)
             document.querySelector('.modal').classList.remove('open')
             localStorage.setItem('isShowedModal', true)
@@ -215,12 +215,12 @@ document.addEventListener('click', e => {
                         <li class="settings__close">&larr;</li>
                         <li>Choose theme</li>
                     </ul>`,
-            body: `<ul>
-                <li class="choose"><div class="blue choose__color"></div><p>color</p></li>
-                <li class="choose"><div class="white choose__color"></div><p>color</p></li>
-                <li class="choose"><div class="black choose__color"></div><p>color</p></li>
-                <li class="choose"><div class="green choose__color"></div><p>color</p></li>
-            </ul>`,
+            body: `<div class="change__color">
+                <div class="blue choose__color"></div>
+                <div class="white choose__color"></div>
+                <div class="black choose__color"></div>
+                <div class="green choose__color"></div>
+            </div>`,
             // footer: 'Find bug? Tell us email@example.com',
             background: 'lightblue',
             class: 'theme',
@@ -241,6 +241,12 @@ document.addEventListener('click', e => {
             class: 'settings',
         })
         settings.open()
+    } else if(e.target.classList.contains('choose')) {
+        const color = document.querySelectorAll('.choose')
+        console.log(color[0])
+        if(e.target.classList.contains('green')) {
+            console.log('green')
+        }
     }
 
 })

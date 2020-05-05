@@ -325,18 +325,19 @@ main {
     cursor: pointer;
 }
 
-.choose {
+.change__color {
     display: flex;
-    align-items: center;
-    justify-content: left;
+    padding: 1px;
 }
 
 .choose__color {
+    display: flex;
+    justify-content: space-between;
     display: block;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin: 10px;
+    cursor: pointer
 }
 .white {
     background: white
