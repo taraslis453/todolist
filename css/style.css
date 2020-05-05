@@ -197,6 +197,10 @@ aside {
     margin-left: 25px;
 }
 
+.list__item-name.wrong {
+    border: 1px solid red;
+}
+
 .list__item:hover .list__item-name {
     margin-left: 25px;
 }

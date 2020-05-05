@@ -100,6 +100,13 @@ function listen() {
         })
 
         listItemInputs[i].addEventListener('keyup', e => {
+            if(listItemInputs[i].value === ""){
+                listItemInputs[i].classList.add('wrong');
+                return false;
+            }else {
+                listItemInputs[i].classList.remove('wrong')
+            }
+
             if(e.keyCode === 13) {
                 listItemInputs[i].setAttribute('value', listItemInputs[i].value );
                 listItemInputs[i].blur();
@@ -109,11 +116,17 @@ function listen() {
         });
 
         listItemInputs[i].onblur = () => {
-            listItemInputs[i].setAttribute('value', listItemInputs[i].value );
-            listItemInputs[i].readOnly = true;
-            saveToStorage();
+            if(listItemInputs[i].value === ""){
+                listItemInputs[i].classList.add('wrong');
+                listItemInputs[i].focus();
+                return false;
+            }else {
+                listItemInputs[i].classList.remove('wrong')
+                listItemInputs[i].setAttribute('value', listItemInputs[i].value );
+                listItemInputs[i].readOnly = true;
+                saveToStorage();
+            }
         };
-
 
         deleteListBtn[i].onclick = () => {
             deleteListBtn[i].parentNode.remove();
