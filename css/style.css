@@ -33,6 +33,10 @@ button {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.d-none {
+    display: none;
+}
+
 /* HEADER */
 header {
     background: #383b40;
@@ -372,6 +376,10 @@ aside {
     margin-left: 25px;
 }
 
+.list__item-name.wrong {
+    border: 1px solid red;
+}
+
 .list__item:hover .list__item-name {
     margin-left: 25px;
 }
@@ -432,6 +440,10 @@ main {
     margin-bottom: 15px;
 }
 
+.task.wrong {
+    border: 1px solid red;
+}
+
 .task__input-wrap {
     width: 100%;
     display: flex;
@@ -448,6 +460,11 @@ main {
     background: #222221;
     border: 1px solid #010101;
     color: #fafafa;
+    transition: all .3s ease;
+}
+
+.task__input.wrong {
+    border: 1px solid red;
 }
 
 /* MODAL-GREET */

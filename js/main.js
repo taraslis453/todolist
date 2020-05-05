@@ -4,6 +4,8 @@ listItems.innerHTML = localStorage.getItem('todoList');
 const taskItems = document.querySelector('.task__items');
 taskItems.innerHTML = localStorage.getItem('taskList');
 
+const taskInput = document.querySelector('.task__input');
+
 document.addEventListener('DOMContentLoaded', () => {
     // CLOSE MODAl
 
@@ -73,9 +75,14 @@ function createPersonalName(e) {
 function listen() {
     let listItemInputs = document.querySelectorAll('.list__item input');
     let deleteListBtn = document.querySelectorAll('.delete__list-icon');
-    taskItemsChildren = document.querySelectorAll('.task__item')
-    let taskInput = document.querySelector('.task__input');
-    // Так как у нас одинаковое количество инпутов и кнопок удалить этот инпут то это все мы помещаем в один цыкл
+    taskItemsChildren = document.querySelectorAll('.task__item');
+    // Если нет списков то не показыть поле добавить задачу
+    if(listItemInputs.length === 0) {
+        taskInput.classList.add('d-none')
+    }else {
+        taskInput.classList.remove('d-none');
+    }
+    // Так как у нас одинаковое количество инпутов, кнопок удалить этот инпут то это все мы помещаем в один цыкл
     for(let i = 0; i < listItemInputs.length; i++) {
 
         listItemInputs[i].addEventListener('click', e => {
@@ -93,6 +100,13 @@ function listen() {
         })
 
         listItemInputs[i].addEventListener('keyup', e => {
+            if(listItemInputs[i].value === ""){
+                listItemInputs[i].classList.add('wrong');
+                return false;
+            }else {
+                listItemInputs[i].classList.remove('wrong')
+            }
+
             if(e.keyCode === 13) {
                 listItemInputs[i].setAttribute('value', listItemInputs[i].value );
                 listItemInputs[i].blur();
@@ -102,34 +116,92 @@ function listen() {
         });
 
         listItemInputs[i].onblur = () => {
-            listItemInputs[i].setAttribute('value', listItemInputs[i].value );
-            listItemInputs[i].readOnly = true;
-            saveToStorage();
+            if(listItemInputs[i].value === ""){
+                listItemInputs[i].classList.add('wrong');
+                listItemInputs[i].focus();
+                return false;
+            }else {
+                listItemInputs[i].classList.remove('wrong')
+                listItemInputs[i].setAttribute('value', listItemInputs[i].value );
+                listItemInputs[i].readOnly = true;
+                saveToStorage();
+            }
         };
 
         deleteListBtn[i].onclick = () => {
             deleteListBtn[i].parentNode.remove();
             taskItemsChildren[i].remove();
+            listen();
             saveToStorage();
+        }
+    }
+    let allTasks = document.querySelectorAll('.task')
+    for(let i = 0; i < allTasks.length; i++) {
+        allTasks[i].addEventListener('dblclick', () => {
+            allTasks[i].readOnly = false;
+        })
+
+        allTasks[i].addEventListener('keyup', e => {
+            // Не даю вводить пустое значение
+            if(allTasks[i].value === ""){
+                allTasks[i].classList.add('wrong');
+                return false;
+            }else {
+                allTasks[i].classList.remove('wrong')
+            }
+            if(e.keyCode === 13) {
+                allTasks[i].setAttribute('value', allTasks[i].value);
+                allTasks[i].blur();
+                allTasks[i].readOnly = true;
+                saveToStorage();
+            }
+        })
+
+        allTasks[i].onblur = () => {
+            // Не даю вводить пустое значение
+            if(allTasks[i].value === ""){
+                allTasks[i].classList.add('wrong');
+                allTasks[i].focus();
+                return false;
+            }else {
+                allTasks[i].classList.remove('wrong')
+                allTasks[i].setAttribute('value', allTasks[i].value);
+                allTasks[i].readOnly = true;
+                saveToStorage();
+            }
         }
     }
 
     taskInput.onkeyup = e => {
         if(e.keyCode === 13) {
             createTask(taskInput);
+            listen();
         }
     }
+    taskInput.addEventListener('keyup', e => {
+        if(e.keyCode !== 13) {
+            taskInput.classList.remove('wrong');
+        }
+    })
 }
 
 listen();
 
 function createTask(e) {
+    // Не даю вводить пустое значение
+    if(e.value === ""){
+        e.classList.add('wrong');
+        return false;
+    }else {
+        e.classList.remove('wrong')
+    }
     // Получаю список который выбран и передаю в инпут для добавление задач что бы он знал куда добавлять
     listSelectedName = localStorage.getItem('listSelectedName');
     // Создание задачи с уникальным именем
     task = document.createElement('input');
     task.classList.add('task');
     task.setAttribute('value', e.value);
+    task.readOnly = true;
     taskItems.querySelector('.' + listSelectedName).append(task);
     // Очистка инпута после добавление задачи
     e.value = "";
@@ -157,6 +229,4 @@ function openSettings() {
     // REMOVE HIDE CLASS
     const $modal = document.querySelector('.modal')
     $modal.classList.remove('hide')
-
-
 }
