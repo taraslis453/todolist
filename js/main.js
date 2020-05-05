@@ -5,6 +5,33 @@ const taskItems = document.querySelector('.task__items');
 taskItems.innerHTML = localStorage.getItem('taskList');
 
 const taskInput = document.querySelector('.task__input');
+
+document.addEventListener('DOMContentLoaded', () => {
+    // CLOSE MODAl
+
+    if(localStorage.getItem('isClosedGreet')) {
+        document.querySelector('.modal__greet').classList.add('disabled')
+    } else {
+        document.querySelector('.modal__greet').classList.remove('disabled')
+        setTimeout(() => {
+            document.querySelector('.modal__greet').classList.add('hide')
+            localStorage.setItem('isClosedGreet', true)
+        }, 2000)
+    }
+})
+
+document.addEventListener('click', e => {
+    // HIDE SETTINGS IF PRESSED КРЕСТИК ИЛИ OVERLAY
+    if(e.target.dataset.close === 'true' || e.target.classList.contains('overlay')) {
+        document.querySelector('.modal').classList.add('hide')
+        document.querySelectorAll('.test').forEach(e => e.classList.add('disabled'))
+        setTimeout(() => document.querySelector('.modal-content-settings').classList.remove('disabled'), 1000)
+    } else if(e.target.dataset.select) {
+        document.querySelector('.modal-content-settings').classList.add('disabled')
+        document.querySelector('.modal-content-theme').classList.remove('disabled')
+    }
+})
+
 function createListDiv() {
     // Созданние списка и добавление в конец всех списков
     let listDiv = document.createElement("div");
@@ -133,4 +160,10 @@ function openTasks() {
         aside.classList.add('d-mob-none')
     }
 
+}
+
+function openSettings() {
+    // REMOVE HIDE CLASS
+    const $modal = document.querySelector('.modal')
+    $modal.classList.remove('hide')
 }
