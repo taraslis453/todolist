@@ -6,13 +6,15 @@ taskItems.innerHTML = localStorage.getItem('taskList');
 
 document.addEventListener('DOMContentLoaded', () => {
     // CLOSE MODAl
-    if(!localStorage.getItem('isClosedGreet')) {
-        window.setTimeout(() => {
-            document.querySelector('.modal__greet').classList.add('hide')
-        }, 1000)
-        localStorage.setItem('isClosedGreet', true)
+
+    if(localStorage.getItem('isClosedGreet')) {
+        document.querySelector('.modal__greet').classList.add('disabled')
     } else {
-        document.querySelector('.modal__greet').style.display = 'none'
+        document.querySelector('.modal__greet').classList.remove('disabled')
+        setTimeout(() => {
+            document.querySelector('.modal__greet').classList.add('hide')
+            localStorage.setItem('isClosedGreet', true)
+        }, 1000)
     }
 })
 
