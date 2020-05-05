@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('click', e => {
-    
+    if(e.target.dataset.close === 'true' || e.target.classList.contains('overlay')) {
+        document.querySelector('.modal').classList.add('hide')    
+    }
 })
 
 function createListDiv() {
