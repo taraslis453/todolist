@@ -91,7 +91,7 @@ header {
   left: 50%; margin-left: -10px;
   width: 20px;
   height: 2px;
-  background-color: #222;
+  background-color: #fff;
 }
 
 .menu__btn span::before {
@@ -118,7 +118,7 @@ header {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #222;
+    background-color: #fff;
 }
 
 .settings__btn span::before{
@@ -128,6 +128,185 @@ header {
 .settings__btn span::after{
     transform: translateY(-11px);
 }
+
+/* SELECTE THEME ICON */
+
+.selectIco {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid #000;
+}
+
+.selectIco span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top: 30%; margin-top: -4px;
+    left: 50%; margin-left: -4px;
+    position: relative;
+}
+
+.selectIco span,
+.selectIco span::after {
+    background: #000;
+}
+
+.selectIco span::after {
+    position: relative;
+    content: '';
+    display: block;
+    width: 4px;
+    height: 10px;
+    border-radius: 5px;
+    top: 115%; margin-top: -5px;
+    left: 50%; margin-left: -2px;
+}
+
+/* EDIT ICON */
+
+.editIco {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+.editIco div,
+.editIco div::after {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+
+.editIco div::after {
+    content: '';
+    position: absolute;
+    transform: translateX(22px) translateY(13px);
+}
+
+.editIco span::after {
+    position: relative;
+    content: '';
+    transform: translateY(14px) translateX(-4px);
+}
+
+.editIco span {
+    transform: translateY(6px) translateX(6px);
+}
+
+.editIco span::after,
+.editIco span {
+    left: 50%; margin-left: -10px;
+    display: block;
+    background: #000;
+    position: relative;
+    width: 16px;
+    height: 3px;
+}
+
+/* NOTIFICATION ICON */
+
+.notificationIco {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.bell {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.bell .bell-top {  
+    width: 20px;
+    height: 20px;
+    background: black;
+    border-radius: 50% 50% 0 0;
+    left: 20px;
+    top: 11px;
+    position: relative;
+}
+.bell .bell-top:before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: inherit;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;      
+}
+.bell .bell-top:after {
+    border-radius: 3px;
+    content: '';
+    border-bottom: 4px solid black; 
+    border-left: 8px solid black; 
+    border-right: 8px solid black; 
+    height: 0px; 
+    width: 18px;
+    position: absolute;
+    left: -7px;
+    bottom: -5px;
+}
+.bell-bot {
+    width:10px;
+    height: 5px;
+    background: black;
+    position: absolute;
+    left: 99%;
+    transform: translateX(-50%);
+    bottom: -22px;
+    border-radius: 0 0 16px 16px;
+}
+
+/* LANGUAGE ICON */
+
+.languageIco {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: 3px solid #000;
+}
+
+.languageIco span {
+    width: 4px;
+    height: 12px;
+    border-radius: 3px;
+    position: absolute;
+    transform: translateX(10.5px)  translateY(10px) rotate(90deg);
+}
+
+.languageIco span::after,
+.languageIco span::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.languageIco span::after {
+    transform: rotate(-63deg) translateX(-2px) translateY(-3px);
+}
+
+.languageIco span::before {
+    transform: rotate(-116deg) translateX(8px) translateY(0px);
+}
+
+.languageIco span,
+.languageIco span::after,
+.languageIco span::before {
+    display: block;
+    position: absolute;
+    background: #000;
+}
+
 
 /* SOMETHING */
 
@@ -336,9 +515,26 @@ main {
 
 /* SETITNGS */
 
+.set {
+    display: flex;
+}
+
+.set p {
+    margin-left: 10px;
+}
+
 .closeBtn {
     display: flex;
     float: right;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
+.backBtn {
+    display: flex;
+    float: left;
     color: black;
     cursor: pointer;
     padding: 10px;
@@ -398,7 +594,9 @@ main {
 .modal-content-theme .settings__body ul li{
     opacity: .85;
     margin: 10px;
-    cursor: pointer
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .modal-content-settings .settings__body ul li:hover {
@@ -421,10 +619,11 @@ main {
 /* ADAPТИВНОСТЬ */
 
 @media (max-width: 992px) {
-    .modal-content-settings {
+    .modal-content-settings, .modal-content-theme {
         width: 70%;
     }
-    .modal-content-settings .settings__header {
+    .modal-content-settings .settings__header,
+    .modal-content-theme .settings__header {
         font-size: 2.6rem;
     }
 }

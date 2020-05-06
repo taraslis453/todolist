@@ -35,11 +35,34 @@
 				<div class="line"></div>
 				<div class="settings__body">
 					<ul>
-						<li data-select="true">Select theme</li>
-						<li>Edit profile</li>
-						<li>Notifications</li>
-						<li>Language</li>
-						<li>Preferences</li>
+						<li data-select="true" class="set">
+							<a class="selectIco" data-select="true">
+								<span data-select="true"></span>
+							</a>
+							<p data-select="true">Select theme</p>
+						</li>
+						<li class="set">
+							<a class="editIco">
+								<span></span>
+								<div></div>
+							</a>
+							<p>Edit profile</p>
+						</li>
+						<li class="set">
+							<a class="notificationIco">
+								<div class="bell">
+									<div class="bell-top"></div>
+  								<div class="bell-bot"></div>
+								</div>
+							</a>
+							<p>Notifications</p>
+						</li>
+						<li class="set">
+							<a class="languageIco">
+								<span></span>
+							</a>
+							<p>Language</p>
+						</li>
 					</ul>
 				</div>
 				<div class="line"></div>
@@ -49,6 +72,7 @@
 			</div>
 			<!-- SETTINGS THEME SELECT -->
 			<div class="modal-content-theme disabled test">
+				<p class="backBtn" data-back='true'>&larr;</p>
 				<p class="closeBtn" data-close='true'>&times;</p>
 				<div class="settings__header">
 					<p>Theme</p>
@@ -109,6 +133,5 @@
 		</main>
 	</div>
 	<script src="js/main.js"></script>
-	<script src="https://kit.fontawesome.com/f632cacd3a.js" crossorigin="anonymous"></script>
 </body>
 </html>

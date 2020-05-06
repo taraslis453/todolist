@@ -22,13 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('click', e => {
     // HIDE SETTINGS IF PRESSED КРЕСТИК ИЛИ OVERLAY
-    if(e.target.dataset.close === 'true' || e.target.classList.contains('overlay')) {
+    if(e.target.dataset.close || e.target.classList.contains('overlay')) {
         document.querySelector('.modal').classList.add('hide')
         document.querySelectorAll('.test').forEach(e => e.classList.add('disabled'))
         setTimeout(() => document.querySelector('.modal-content-settings').classList.remove('disabled'), 1000)
     } else if(e.target.dataset.select) {
         document.querySelector('.modal-content-settings').classList.add('disabled')
         document.querySelector('.modal-content-theme').classList.remove('disabled')
+    } else if(e.target.dataset.back) {
+        document.querySelector('.modal-content-settings').classList.remove('disabled')
+        document.querySelector('.modal-content-theme').classList.add('disabled')
     }
 })
 
