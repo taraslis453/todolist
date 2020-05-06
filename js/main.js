@@ -4,6 +4,8 @@ listItems.innerHTML = localStorage.getItem('todoList');
 const taskItems = document.querySelector('.task__items');
 taskItems.innerHTML = localStorage.getItem('taskList');
 
+const makeAListBlock = document.querySelector('.make_a_list')
+const taskInputWrap = document.querySelector('.task__input-wrap')
 const taskInput = document.querySelector('.task__input');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             document.querySelector('.modal__greet').classList.add('hide')
             localStorage.setItem('isClosedGreet', true)
-        }, 2000)
+        }, 10000)
     }
 })
 
@@ -50,7 +52,7 @@ function createListDiv() {
     createPersonalName(listDiv);
     listDiv.innerHTML =
         `<svg class="delete__list-icon" fill="#000000" width="26px" height="26px"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
-        <input type="text" class="list__item-name" value="Список без названия">
+        <input type="text" class="list__item-name" value="Untitled list">
         <div class="list__item-count">${1}</div>`;
     listItems.append(listDiv);
     listen();
@@ -72,6 +74,9 @@ function createPersonalName(e) {
     // Создание списка и его соединение с блоком задач
     let taskDiv = document.createElement('div');
     taskDiv.classList.add('task__item', personalName);
+    listTitleName = document.createElement('h2')
+    listTitleName.classList.add('list__item-title')
+    taskDiv.append(listTitleName)
     taskItems.append(taskDiv);
     // Скрываем все блоки с задачами и показывем только выбранный
     for(let a = 0; a < taskItemsChildren.length; a++) {
@@ -89,9 +94,11 @@ function listen() {
     taskItemsChildren = document.querySelectorAll('.task__item');
     // Если нет списков то не показыть поле добавить задачу
     if(listItemInputs.length === 0) {
-        taskInput.classList.add('d-none')
+        taskInputWrap.classList.add('d-none')
+        makeAListBlock.classList.remove('d-none')
     }else {
-        taskInput.classList.remove('d-none');
+        taskInputWrap.classList.remove('d-none');
+        makeAListBlock.classList.add('d-none')
     }
     // Так как у нас одинаковое количество инпутов, кнопок удалить этот инпут то это все мы помещаем в один цыкл
     for(let i = 0; i < listItemInputs.length; i++) {
@@ -111,7 +118,8 @@ function listen() {
         })
 
         listItemInputs[i].addEventListener('keyup', e => {
-            if(listItemInputs[i].value === ""){
+            // Не даю вводить пустое значение
+            if(listItemInputs[i].value === "") {
                 listItemInputs[i].classList.add('wrong');
                 return false;
             }else {
@@ -122,12 +130,17 @@ function listen() {
                 listItemInputs[i].setAttribute('value', listItemInputs[i].value );
                 listItemInputs[i].blur();
                 listItemInputs[i].readOnly = true;
+                let listItemPersonalName = listItemInputs[i].parentNode.classList[1];
+                let selectedList  = taskItems.querySelector('.' + listItemPersonalName);
+                let selectedListTitle = selectedList.querySelector('.list__item-title');
+                selectedListTitle.innerHTML = listItemInputs[i].value;
                 saveToStorage();
             }
         });
 
         listItemInputs[i].onblur = () => {
-            if(listItemInputs[i].value === ""){
+            // Не даю вводить пустое значение
+            if(listItemInputs[i].value === "") {
                 listItemInputs[i].classList.add('wrong');
                 listItemInputs[i].focus();
                 return false;
@@ -135,6 +148,10 @@ function listen() {
                 listItemInputs[i].classList.remove('wrong')
                 listItemInputs[i].setAttribute('value', listItemInputs[i].value );
                 listItemInputs[i].readOnly = true;
+                let listItemPersonalName = listItemInputs[i].parentNode.classList[1];
+                let selectedList  = taskItems.querySelector('.' + listItemPersonalName);
+                let selectedListTitle = selectedList.querySelector('.list__item-title');
+                selectedListTitle.innerHTML = listItemInputs[i].value;
                 saveToStorage();
             }
         };
@@ -154,7 +171,7 @@ function listen() {
 
         allTasks[i].addEventListener('keyup', e => {
             // Не даю вводить пустое значение
-            if(allTasks[i].value === ""){
+            if(allTasks[i].value === "") {
                 allTasks[i].classList.add('wrong');
                 return false;
             }else {
