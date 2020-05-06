@@ -9,13 +9,19 @@ body {
     opacity: 65%;
     color: #fafafa;
     font-family: "Roboto-Regular", sans-serif;
-    height: 100vh;
+    /*height: 100vh;*/
     overflow: hidden;
     min-height: 580px;
+
 }
 
 .app {
     display: flex;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 :focus {
@@ -322,7 +328,7 @@ aside {
     z-index: 1;
     border-right: 3px solid #5e5e5e;
     overflow: auto;
-    height: 100vh;
+    /*height: 100vh;*/
     width: 500px;
     display: flex;
     flex-direction: column;
@@ -403,7 +409,7 @@ aside {
     margin-top: 5px;
     width: 275px;
     text-align: left;
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
 }
 
 main {
@@ -414,7 +420,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    /*height: 100vh;*/
 }
 
 .task__items-wrap {
@@ -462,7 +468,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
     padding: 10px 25px 0 10px;
 }
 
