@@ -1,0 +1,23 @@
+body.white main {
+    background: #fff;
+    color: black;
+}
+
+body.white header {
+    background: #fff;
+    color: black;
+}
+
+body.white aside {
+    background-color: #fff;
+    color: black;
+}
+
+.settings__btn span::after,
+.settings__btn span::before,
+.settings__btn span,
+.menu__btn span,
+.menu__btn span::after,
+.menu__btn span::before {
+    background: #000;
+}

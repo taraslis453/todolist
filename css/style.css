@@ -521,7 +521,7 @@ main {
     color: black;
     cursor: pointer;
     padding: 10px;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
 }
 
 .backBtn {
@@ -530,7 +530,7 @@ main {
     color: black;
     cursor: pointer;
     padding: 10px;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
 }
 
 .line {
@@ -608,9 +608,50 @@ main {
     cursor: pointer;
 }
 
+.round {
+    width: 50px;
+    height: 50px;
+    border-radius: 40%;
+    border: 1px solid #5e5e5e;
+    cursor: pointer;
+}
+
+.modal-content-theme .settings__body ul {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.modal-content-theme .settings__body ul .round{
+    
+    
+}
+
+.white {
+    background: #fff;
+}
+
+.black {
+    background: #000;
+}
+
+.green {
+    background: rgb(1, 228, 179);
+}
+
+.blue {
+    background: rgb(100, 100, 231);
+}
+
 /* ADAPТИВНОСТЬ */
 
 @media (max-width: 992px) {
+    .closeBtn,
+    .backBtn {
+        font-size: 2.6rem;
+        padding: 10px;
+    }
+
     .modal-content-settings, .modal-content-theme {
         width: 70%;
     }

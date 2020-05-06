@@ -23,17 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('click', e => {
     // HIDE SETTINGS IF PRESSED КРЕСТИК ИЛИ OVERLAY
     if(e.target.dataset.close || e.target.classList.contains('overlay')) {
-        document.querySelector('.modal').classList.add('hide')
-        document.querySelectorAll('.test').forEach(e => e.classList.add('disabled'))
-        setTimeout(() => document.querySelector('.modal-content-settings').classList.remove('disabled'), 1000)
+        closeAllModals()
     } else if(e.target.dataset.select) {
         document.querySelector('.modal-content-settings').classList.add('disabled')
         document.querySelector('.modal-content-theme').classList.remove('disabled')
     } else if(e.target.dataset.back) {
         document.querySelector('.modal-content-settings').classList.remove('disabled')
         document.querySelector('.modal-content-theme').classList.add('disabled')
+        // CHANGE THEME TO WHITE
+    } else if(e.target.classList.contains('white')) {
+        closeAllModals()
+        document.querySelector('body').classList.add('white')
     }
 })
+
+function closeAllModals() {
+    document.querySelector('.modal').classList.add('hide')
+    document.querySelectorAll('.test').forEach(e => e.classList.add('disabled'))
+    setTimeout(() => document.querySelector('.modal-content-settings').classList.remove('disabled'), 1000)
+}
 
 function createListDiv() {
     // Созданние списка и добавление в конец всех списков
