@@ -74,7 +74,7 @@ function createPersonalName(e) {
     // Создание списка и его соединение с блоком задач
     let taskDiv = document.createElement('div');
     taskDiv.classList.add('task__item', personalName);
-    listTitleName = document.createElement('h2')
+    let listTitleName = document.createElement('h2')
     listTitleName.classList.add('list__item-title')
     taskDiv.append(listTitleName)
     taskItems.append(taskDiv);
@@ -107,7 +107,7 @@ function listen() {
             for(let a = 0; a < taskItemsChildren.length; a++) {
                 taskItemsChildren[a].style.display = 'none';
             }
-            listItemPersonalName =  e.target.parentNode.classList[1];
+            let listItemPersonalName =  e.target.parentNode.classList[1];
             taskItems.querySelector('.' + listItemPersonalName).style.display = 'block';
             localStorage.setItem('listSelectedName', listItemPersonalName);
             saveToStorage();
@@ -224,9 +224,9 @@ function createTask(e) {
         e.classList.remove('wrong')
     }
     // Получаю список который выбран и передаю в инпут для добавление задач что бы он знал куда добавлять
-    listSelectedName = localStorage.getItem('listSelectedName');
+    let listSelectedName = localStorage.getItem('listSelectedName');
     // Создание задачи с уникальным именем
-    task = document.createElement('input');
+    let task = document.createElement('input');
     task.classList.add('task');
     task.setAttribute('value', e.value);
     task.readOnly = true;
@@ -243,7 +243,6 @@ function saveToStorage() {
 }
 
 const aside = document.querySelector('aside')
-const main = document.querySelector('main')
 function openTasks() {
     if(aside.classList.contains('d-mob-none')) {
         aside.classList.remove('d-mob-none');
