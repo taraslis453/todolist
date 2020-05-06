@@ -261,6 +261,10 @@ main {
     margin-bottom: 15px;
 }
 
+.task:focus {
+    opacity: 75%;
+}
+
 .task.wrong {
     border: 1px solid red;
 }
@@ -282,6 +286,10 @@ main {
     border: 1px solid #010101;
     color: #fafafa;
     transition: all .3s ease;
+}
+
+.task__input:focus {
+    opacity: 75%;
 }
 
 .task__input.wrong {
