@@ -1,23 +1,164 @@
-body.white main {
-    background: #fff;
-    color: black;
+body.white a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-body.white header {
-    background: #fff;
-    color: black;
+body.white button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body.white main {
+    background: #ffe999;
 }
 
 body.white aside {
-    background-color: #fff;
+    background: #ffe999;
+    border-right: 3px solid #b3b3b3;
+}
+
+/* HEADER */
+body.white header {
+    background: #ffc543;
+    border-bottom: 1px solid #ffb91e;
+    color: #000;
+}
+
+body.white .menu__btn span,
+body.white .menu__btn span::before,
+body.white .menu__btn span::after {
+  background-color: ;
+}
+
+body.white .settings__btn span::before,
+body.white .settings__btn span::after,
+body.white .settings__btn span {
+    background-color: #000;
+}
+
+body.white .selectIco {
+    border: 3px solid #000;
+}
+
+body.white .selectIco span,
+body.white .selectIco span::after {
+    background: #000;
+}
+
+body.white .editIco div,
+body.white .editIco div::after {
+    background-color: black;
+}
+
+body.white .editIco span::after,
+body.white .editIco span {
+    background: #000;
+}
+
+body.white .bell .bell-top {  
+    background: black;
+}
+body.white .bell .bell-top:after {
+    border-bottom: 4px solid black; 
+    border-left: 8px solid black; 
+    border-right: 8px solid black; 
+}
+body.white .bell-bot {
+    background: black;
+}
+
+body.white .languageIco {
+    border: 3px solid #000;
+}
+
+body.white .languageIco span,
+body.white .languageIco span::after,
+body.white .languageIco span::before {
+    background: #000;
+}
+
+body.white .delete__list-icon:hover {
+    fill: rgba(210,13,20,0.7);
+}
+
+body.white .list__item-name {
+    color: #000;    
+}
+
+body.white .list__item-name.wrong {
+    border: 1px solid red;
+}
+
+body.white .list__item-name:focus {
+    background: #383b40;
+}
+
+body.white .create__list-btn {
+    color: #000;
+}
+
+body.white .task {
+    background: #ffc543;
+    border: 1px solid #010101;
+    color: #000;
+}
+body.white .task.wrong {
+    border: 1px solid red;
+}
+
+body.white .make_a_list {
+    color: #000;
+}
+
+body.white .list__item-title {
+    color: #000;
+}
+
+body.white .task__input {
+    background: #ffc543;
+    border: 1px solid #000;
+    color: none;
+}
+body.white .task__input.wrong {
+    border: 1px solid red;
+}
+body.white .modal__greet .overlay {
+    background: rgba(0, 0, 0, 1);
+}
+
+body.white .closeBtn {
     color: black;
 }
 
-.settings__btn span::after,
-.settings__btn span::before,
-.settings__btn span,
-.menu__btn span,
-.menu__btn span::after,
-.menu__btn span::before {
-    background: #000;
+body.white .backBtn {
+    color: black;
+}
+
+body.white .line {
+    background: #cc000c;
+}
+
+body.white .modal .overlay {
+    background: rgba(0, 0, 0, .4);
+}
+
+body.white .modal-content-settings,
+body.white .modal-content-theme {
+    background: 000;  
+}
+
+body.white .modal-content-settings .settings__header,
+body.white .modal-content-theme .settings__header {
+    color: #000;
+}
+
+body.white .modal-content-settings .settings__body,
+body.white .modal-content-theme .settings__body {
+    color: #000;
+}
+
+body.white .modal-content-settings .settings__footer,
+body.white .modal-content-theme .settings__footer {
+    color: black;
+}
+body.white .round {
+    border: 1px solid #5e5e5e;
 }
