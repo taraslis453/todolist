@@ -4,6 +4,8 @@ listItems.innerHTML = localStorage.getItem('todoList');
 const taskItems = document.querySelector('.task__items');
 taskItems.innerHTML = localStorage.getItem('taskList');
 
+const makeAListBlock = document.querySelector('.make_a_list')
+const taskInputWrap = document.querySelector('.task__input-wrap')
 const taskInput = document.querySelector('.task__input');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,6 +66,9 @@ function createPersonalName(e) {
     // Создание списка и его соединение с блоком задач
     let taskDiv = document.createElement('div');
     taskDiv.classList.add('task__item', personalName);
+    listTitleName = document.createElement('h2')
+    listTitleName.classList.add('list__item-title')
+    taskDiv.append(listTitleName)
     taskItems.append(taskDiv);
     // Скрываем все блоки с задачами и показывем только выбранный
     for(let a = 0; a < taskItemsChildren.length; a++) {
@@ -81,9 +86,11 @@ function listen() {
     taskItemsChildren = document.querySelectorAll('.task__item');
     // Если нет списков то не показыть поле добавить задачу
     if(listItemInputs.length === 0) {
-        taskInput.classList.add('d-none')
+        taskInputWrap.classList.add('d-none')
+        makeAListBlock.classList.remove('d-none')
     }else {
-        taskInput.classList.remove('d-none');
+        taskInputWrap.classList.remove('d-none');
+        makeAListBlock.classList.add('d-none')
     }
     // Так как у нас одинаковое количество инпутов, кнопок удалить этот инпут то это все мы помещаем в один цыкл
     for(let i = 0; i < listItemInputs.length; i++) {
@@ -115,6 +122,10 @@ function listen() {
                 listItemInputs[i].setAttribute('value', listItemInputs[i].value );
                 listItemInputs[i].blur();
                 listItemInputs[i].readOnly = true;
+                let listItemPersonalName = listItemInputs[i].parentNode.classList[1];
+                let selectedList  = taskItems.querySelector('.' + listItemPersonalName);
+                let selectedListTitle = selectedList.querySelector('.list__item-title');
+                selectedListTitle.innerHTML = listItemInputs[i].value;
                 saveToStorage();
             }
         });
@@ -129,6 +140,10 @@ function listen() {
                 listItemInputs[i].classList.remove('wrong')
                 listItemInputs[i].setAttribute('value', listItemInputs[i].value );
                 listItemInputs[i].readOnly = true;
+                let listItemPersonalName = listItemInputs[i].parentNode.classList[1];
+                let selectedList  = taskItems.querySelector('.' + listItemPersonalName);
+                let selectedListTitle = selectedList.querySelector('.list__item-title');
+                selectedListTitle.innerHTML = listItemInputs[i].value;
                 saveToStorage();
             }
         };

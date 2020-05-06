@@ -34,7 +34,7 @@ button {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 /* HEADER */
@@ -396,7 +396,7 @@ aside {
 .create__list-btn {
     border: none;
     background: none;
-    color: gray;
+    color: #ccc;
     cursor: pointer;
     font-size: 18px;
     padding: 5px;
@@ -429,6 +429,10 @@ main {
     display: none;
 }
 
+.list__item-title {
+    margin-bottom: 25px;
+}
+
 .task {
     width: 100%;
     border-radius: 10px;
@@ -446,6 +450,11 @@ main {
 
 .task.wrong {
     border: 1px solid red;
+}
+
+.make_a_list {
+    margin-bottom: 60px;
+    color: #ccc;
 }
 
 .task__input-wrap {
