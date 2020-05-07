@@ -1,3 +1,5 @@
+const body = document.querySelector('body');
+
 const listItems = document.querySelector('.list__items');
 listItems.innerHTML = localStorage.getItem('todoList');
 
@@ -121,9 +123,11 @@ function listen() {
             // Не даю вводить пустое значение
             if(listItemInputs[i].value === "") {
                 listItemInputs[i].classList.add('wrong');
+                body.style.pointerEvents = 'none';
                 return false;
             }else {
                 listItemInputs[i].classList.remove('wrong')
+                body.style.pointerEvents = 'all';
             }
 
             if(e.keyCode === 13) {
@@ -134,9 +138,9 @@ function listen() {
                 let selectedList  = taskItems.querySelector('.' + listItemPersonalName);
                 let selectedListTitle = selectedList.querySelector('.list__item-title');
                 selectedListTitle.innerHTML = listItemInputs[i].value;
-
                 aside.classList.add('d-mob-none');
                 menuButton.classList.remove('active');
+                taskInput.focus();
                 saveToStorage();
             }
         });
@@ -146,7 +150,7 @@ function listen() {
             if(listItemInputs[i].value === "") {
                 listItemInputs[i].classList.add('wrong');
                 listItemInputs[i].focus();
-                return false;
+                body.style.pointerEvents = 'none';
             }else {
                 listItemInputs[i].classList.remove('wrong')
                 listItemInputs[i].setAttribute('value', listItemInputs[i].value );
@@ -155,6 +159,7 @@ function listen() {
                 let selectedList  = taskItems.querySelector('.' + listItemPersonalName);
                 let selectedListTitle = selectedList.querySelector('.list__item-title');
                 selectedListTitle.innerHTML = listItemInputs[i].value;
+                body.style.pointerEvents = 'all';
                 saveToStorage();
             }
         };
@@ -176,9 +181,10 @@ function listen() {
             // Не даю вводить пустое значение
             if(allTasks[i].value === "") {
                 allTasks[i].classList.add('wrong');
-                return false;
+                body.style.pointerEvents = 'none';
             }else {
                 allTasks[i].classList.remove('wrong')
+                body.style.pointerEvents = 'all';
             }
             if(e.keyCode === 13) {
                 allTasks[i].setAttribute('value', allTasks[i].value);
@@ -193,11 +199,12 @@ function listen() {
             if(allTasks[i].value === ""){
                 allTasks[i].classList.add('wrong');
                 allTasks[i].focus();
-                return false;
+                body.style.pointerEvents = 'none';
             }else {
                 allTasks[i].classList.remove('wrong')
                 allTasks[i].setAttribute('value', allTasks[i].value);
                 allTasks[i].readOnly = true;
+                body.style.pointerEvents = 'all';
                 saveToStorage();
             }
         }
@@ -209,6 +216,10 @@ function listen() {
             listen();
         }
     }
+    taskInput.onblur = () => {
+        taskInput.classList.remove('wrong');
+    }
+
     taskInput.addEventListener('keyup', e => {
         if(e.keyCode !== 13) {
             taskInput.classList.remove('wrong');
