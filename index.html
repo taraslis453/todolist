@@ -81,11 +81,10 @@
 				<div class="line"></div>
 				<div class="settings__body">
 					<ul>
-						<div class="round white" data-white="true"></div>
-						<div class="round black" data-black="true"></div>
-						<div class="round green" data-grenn="true"></div>
-						<div class="round blue" data-blue="true"></div>
-						
+						<li class="round white" data-white="true"></li>
+						<li class="round black" data-black="true"></li>
+						<li class="round green" data-grenn="true"></li>
+						<li class="round blue" data-blue="true"></li>
 					</ul>
 				</div>
 				<div class="line"></div>
@@ -96,43 +95,47 @@
 		
 		</div>
 	</div>
-	<!-- HEADER -->
-	<header>
-		<ul class="header__content">
-			<li>
-				<a href="#" class="menu__btn" onclick="openTasks()">
-					<span></span>
-				</a>
-			</li>
-			<li>To-Do App</li>
-			<li>
-				<a class="settings__btn" onclick="openSettings()">
-					<span></span>
-				</a>
-			</li>
-		</ul>
-	</header>
+
 	<!-- APP CONTENT -->
 	<div class='app'>
-		<aside class="d-mob-none">
-			<div class="list__items-wrap">
-				<div class="list__items">
+		<!-- HEADER -->
+		<header>
+			<ul class="header__content">
+				<li>
+					<a href="#" class="menu__btn" onclick="openTasks()">
+						<span></span>
+					</a>
+				</li>
+				<li>To-Do App</li>
+				<li>
+					<a class="settings__btn" onclick="openSettings()">
+						<span></span>
+					</a>
+				</li>
+			</ul>
+		</header>
+		<div class="d-flex" style="height: calc(100% - 63px)">
+			<aside class="d-mob-none">
+				<div class="list__items-wrap">
+					<div class="list__items">
 
+					</div>
 				</div>
-			</div>
-			<button onclick="createListDiv()" class="create__list-btn">Create a list</button>
-		</aside>
-		<main>
-			<div class="task__items-wrap">
-				<div class="task__items">
+				<button onclick="createListDiv()" class="create__list-btn">Create a list</button>
+			</aside>
+			<main>
+				<div class="task__items-wrap">
+					<div class="task__items">
 
+					</div>
 				</div>
-			</div>
-			<h3 class="make_a_list d-none">To add a task, make a list</h3>
-			<div class="task__input-wrap">
-				<input placeholder="Add task" type="text" class="task__input">
-			</div>
-		</main>
+				<h3 class="make_a_list d-none">To add a task, make a list</h3>
+				<div class="task__input-wrap">
+					<input placeholder="Add task" type="text" class="task__input">
+				</div>
+			</main>
+		</div>
+
 	</div>
 	<script src="js/main.js"></script>
 </body>

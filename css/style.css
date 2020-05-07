@@ -14,9 +14,8 @@ body {
 }
 
 .app {
-    display: flex;
     position: absolute;
-    top: 60px;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -35,6 +34,10 @@ a {
 
 button {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.d-flex {
+    display: flex;
 }
 
 .d-none {
@@ -313,12 +316,6 @@ header {
 
 
 /* SOMETHING */
-
-.list__item {
-    display: flex;
-    justify-content: space-between;
-}
-
 aside {
     padding: 15px;
     background: #2d2f34;
@@ -343,6 +340,8 @@ aside {
     margin: 5px;
     cursor: pointer;
     position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 
 .list__item:hover {
@@ -405,7 +404,6 @@ aside {
     font-size: 18px;
     padding: 5px;
     margin-top: 5px;
-    width: 275px;
     text-align: left;
 }
 
@@ -688,7 +686,7 @@ main {
 
     aside {
         width: 100%;
-        height: 100%;
+        height: calc(100% - 63px);
         position: absolute;
         z-index: 11;
         border: none;
