@@ -481,7 +481,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
 }
 
 .task__input {
@@ -528,6 +528,7 @@ main {
 
 .modal__greet .modal__body {
     margin-top: 1.6rem;
+    padding: 10px;
 }
 
 /* FOR JS */
@@ -541,7 +542,7 @@ main {
     display: none;
 }
 
-/* SETITNGS */
+/* SETTINGS */
 
 .set {
     display: flex;
