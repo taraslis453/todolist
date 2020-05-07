@@ -134,6 +134,9 @@ function listen() {
                 let selectedList  = taskItems.querySelector('.' + listItemPersonalName);
                 let selectedListTitle = selectedList.querySelector('.list__item-title');
                 selectedListTitle.innerHTML = listItemInputs[i].value;
+
+                aside.classList.add('d-mob-none');
+                menuButton.classList.remove('active');
                 saveToStorage();
             }
         });
@@ -243,16 +246,17 @@ function saveToStorage() {
 }
 
 const aside = document.querySelector('aside')
-function openTasks(e) {
+const menuButton = document.querySelector('.menu__btn');
+menuButton.onclick = function openTasks() {
     if(aside.classList.contains('d-mob-none')) {
-        e.classList.add('active');
+        menuButton.classList.add('active');
         aside.classList.remove('d-mob-none');
     } else {
-        e.classList.remove('active');
+        menuButton.classList.remove('active');
         aside.classList.add('d-mob-none');
     }
-
 }
+
 
 function openSettings() {
     // REMOVE HIDE CLASS

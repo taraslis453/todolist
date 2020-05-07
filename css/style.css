@@ -336,7 +336,6 @@ aside {
     z-index: 1;
     border-right: 3px solid #5e5e5e;
     overflow: auto;
-    /*height: 100vh;*/
     width: 500px;
     display: flex;
     flex-direction: column;
@@ -474,7 +473,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px 25px 0 10px;
+    padding: 10px;
 }
 
 .task__input {
