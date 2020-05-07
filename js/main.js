@@ -243,11 +243,13 @@ function saveToStorage() {
 }
 
 const aside = document.querySelector('aside')
-function openTasks() {
+function openTasks(e) {
     if(aside.classList.contains('d-mob-none')) {
+        e.classList.add('active');
         aside.classList.remove('d-mob-none');
     } else {
-        aside.classList.add('d-mob-none')
+        e.classList.remove('active');
+        aside.classList.add('d-mob-none');
     }
 
 }

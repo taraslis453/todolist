@@ -99,6 +99,7 @@ header {
   width: 20px;
   height: 2px;
   background-color: #fff;
+    transition: all .3s ease;
 }
 
 .menu__btn span::before {
@@ -107,6 +108,18 @@ header {
   .menu__btn span::after {
     transform: translateY(5px);
   }
+
+.menu__btn.active span:before {
+    width: 10px;
+    transform: rotate(-45deg);
+    transform-origin: left bottom;
+}
+
+.menu__btn.active span:after {
+    width: 10px;
+    transform: rotate(45deg);
+    transform-origin: left top;
+}
 
 /* SETTINGS ICON */
 
@@ -680,7 +693,8 @@ main {
 @media (max-width: 576px) {
 
     .d-mob-none {
-        display: none;
+        visibility: hidden;
+        opacity: 0;
     }
 
     aside {
@@ -689,6 +703,7 @@ main {
         position: absolute;
         z-index: 11;
         border: none;
+        transition: all .5s ease;
     }
 
     main {
