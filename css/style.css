@@ -456,16 +456,73 @@ main {
 .task {
     width: 100%;
     border-radius: 10px;
-    padding: 10px;
     font-size: 20px;
     background: #222221;
     border: 1px solid #010101;
     color: #fafafa;
     margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 }
 
-.task:focus {
+.task .task__wrap {
+    display: flex;
+}
+
+.task .task__value {
+    color: #fafafa;;
+    font-size: 20px;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+.task .task__checkbox {
+    margin: 11px 0 0 12px;
+    cursor: pointer;
+}
+
+.task .task__checkbox:before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 18px;
+    height: 18px;
+    z-index: 0;
+    border: 2px solid #A9ABAE;
+    border-radius: 1px;
+    margin-top: 2px;
+    transition: .2s;
+    background: #222221;
+}
+
+.task .task__checkbox:checked:before {
+    top: 2px;
+    left: 1px;
+    width: 13px;
+    height: 22px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #35ac19;
+    border-bottom: 2px solid #35ac19;
+    transform: rotate(40deg);
+    transform-origin: 100% 100%;
+}
+
+.task input:focus, .task {
     opacity: 75%;
+}
+
+.delete__task-icon {
+    cursor: pointer;
+    margin: 10px;
+    transition: all .3s ease;
+}
+
+.delete__task-icon:hover {
+    fill: rgba(210,13,20,0.7);
 }
 
 

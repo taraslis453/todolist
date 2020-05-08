@@ -8,7 +8,7 @@ taskItems.innerHTML = localStorage.getItem('taskList');
 
 const makeAListBlock = document.querySelector('.make_a_list')
 const taskInputWrap = document.querySelector('.task__input-wrap')
-const taskInput = document.querySelector('.task__input');
+const addTaskInput = document.querySelector('.task__input');
 
 document.addEventListener('DOMContentLoaded', () => {
     // CLOSE MODAl
@@ -76,9 +76,9 @@ function createPersonalName(e) {
     // Создание списка и его соединение с блоком задач
     let taskDiv = document.createElement('div');
     taskDiv.classList.add('task__item', personalName);
-    let listTitleName = document.createElement('h2')
-    listTitleName.classList.add('list__item-title')
-    taskDiv.append(listTitleName)
+    let listTitleName = document.createElement('h2');
+    listTitleName.classList.add('list__item-title');
+    taskDiv.append(listTitleName);
     taskItems.append(taskDiv);
     // Скрываем все блоки с задачами и показывем только выбранный
     for(let a = 0; a < taskItemsChildren.length; a++) {
@@ -140,7 +140,7 @@ function listen() {
                 selectedListTitle.innerHTML = listItemInputs[i].value;
                 aside.classList.add('d-mob-none');
                 menuButton.classList.remove('active');
-                taskInput.focus();
+                addTaskInput.focus();
                 saveToStorage();
             }
         });
@@ -171,7 +171,7 @@ function listen() {
             saveToStorage();
         }
     }
-    let allTasks = document.querySelectorAll('.task')
+    let allTasks = document.querySelectorAll('.task input');
     for(let i = 0; i < allTasks.length; i++) {
         allTasks[i].addEventListener('dblclick', () => {
             allTasks[i].readOnly = false;
@@ -209,20 +209,41 @@ function listen() {
             }
         }
     }
+    let taskCheckboxes = document.querySelectorAll('.task__checkbox');
+    let allDeleteTaskIcons = document.querySelectorAll('.delete__task-icon')
+    for(let i = 0; i < taskCheckboxes.length; i++) {
+        taskCheckboxes[i].addEventListener('click', () => {
+            if (taskCheckboxes[i].hasAttribute('checked')) {
+                taskCheckboxes[i].removeAttribute('checked');
+                taskCheckboxes[i].nextSibling.style.textDecoration = 'none';
+            }else {
+                taskCheckboxes[i].setAttribute('checked', true);
+                taskCheckboxes[i].nextSibling.style.textDecoration = 'line-through';
+            }
+            saveToStorage();
+        });
+    }
 
-    taskInput.onkeyup = e => {
+    for (let i = 0; i < allDeleteTaskIcons.length; i++) {
+        allDeleteTaskIcons[i].addEventListener('click', () => {
+            allDeleteTaskIcons[i].parentNode.remove();
+            saveToStorage();
+        })
+    }
+
+    addTaskInput.onkeyup = e => {
         if(e.keyCode === 13) {
-            createTask(taskInput);
+            createTask(addTaskInput);
             listen();
         }
     }
-    taskInput.onblur = () => {
-        taskInput.classList.remove('wrong');
+    addTaskInput.onblur = () => {
+        addTaskInput.classList.remove('wrong');
     }
 
-    taskInput.addEventListener('keyup', e => {
+    addTaskInput.addEventListener('keyup', e => {
         if(e.keyCode !== 13) {
-            taskInput.classList.remove('wrong');
+            addTaskInput.classList.remove('wrong');
         }
     })
 }
@@ -240,10 +261,24 @@ function createTask(e) {
     // Получаю список который выбран и передаю в инпут для добавление задач что бы он знал куда добавлять
     let listSelectedName = localStorage.getItem('listSelectedName');
     // Создание задачи с уникальным именем
-    let task = document.createElement('input');
+    let task = document.createElement('div');
     task.classList.add('task');
-    task.setAttribute('value', e.value);
-    task.readOnly = true;
+    let wrap = document.createElement('div');
+    wrap.classList.add('task__wrap');
+    let taskCheckbox = document.createElement('input');
+    taskCheckbox.classList.add('task__checkbox');
+    taskCheckbox.setAttribute('type', 'checkbox');
+
+    let taskInput = document.createElement('input');
+    taskInput.classList.add('task__value');
+    taskInput.setAttribute('value', e.value);
+    taskInput.readOnly = true;
+
+    deleteTaskIcon = '<svg class="delete__task-icon" fill="#000000" width="26px" height="26px"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>'
+    task.append(wrap);
+    wrap.append(taskCheckbox);
+    wrap.append(taskInput);
+    task.innerHTML += (deleteTaskIcon);
     taskItems.querySelector('.' + listSelectedName).append(task);
     // Очистка инпута после добавление задачи
     e.value = "";
