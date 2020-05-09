@@ -212,7 +212,7 @@ function listen() {
     let taskCheckboxes = document.querySelectorAll('.task__checkbox-input');
     let allDeleteTaskIcons = document.querySelectorAll('.delete__task-icon')
     for(let i = 0; i < taskCheckboxes.length; i++) {
-        taskCheckboxes[i].addEventListener('click', () => {
+        taskCheckboxes[i].onclick =  () => {
             if (taskCheckboxes[i].hasAttribute('checked')) {
                 taskCheckboxes[i].removeAttribute('checked');
                 taskCheckboxes[i].parentNode.nextSibling.style.textDecoration = 'none';
@@ -220,8 +220,9 @@ function listen() {
                 taskCheckboxes[i].setAttribute('checked', true);
                 taskCheckboxes[i].parentNode.nextSibling.style.textDecoration = 'line-through';
             }
+            listen();
             saveToStorage();
-        });
+        };
     }
 
     for (let i = 0; i < allDeleteTaskIcons.length; i++) {
