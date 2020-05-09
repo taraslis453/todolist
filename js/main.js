@@ -209,16 +209,16 @@ function listen() {
             }
         }
     }
-    let taskCheckboxes = document.querySelectorAll('.task__checkbox');
+    let taskCheckboxes = document.querySelectorAll('.task__checkbox-input');
     let allDeleteTaskIcons = document.querySelectorAll('.delete__task-icon')
     for(let i = 0; i < taskCheckboxes.length; i++) {
         taskCheckboxes[i].addEventListener('click', () => {
             if (taskCheckboxes[i].hasAttribute('checked')) {
                 taskCheckboxes[i].removeAttribute('checked');
-                taskCheckboxes[i].nextSibling.style.textDecoration = 'none';
+                taskCheckboxes[i].parentNode.nextSibling.style.textDecoration = 'none';
             }else {
                 taskCheckboxes[i].setAttribute('checked', true);
-                taskCheckboxes[i].nextSibling.style.textDecoration = 'line-through';
+                taskCheckboxes[i].parentNode.nextSibling.style.textDecoration = 'line-through';
             }
             saveToStorage();
         });
@@ -265,10 +265,15 @@ function createTask(e) {
     task.classList.add('task');
     let wrap = document.createElement('div');
     wrap.classList.add('task__wrap');
-    let taskCheckbox = document.createElement('input');
+    let taskCheckbox = document.createElement('label');
     taskCheckbox.classList.add('task__checkbox');
-    taskCheckbox.setAttribute('type', 'checkbox');
-
+    let inputCheckbox = document.createElement('input');
+    inputCheckbox.classList.add('task__checkbox-input')
+    inputCheckbox.setAttribute('type', 'checkbox');
+    let checkboxCheckmark = document.createElement('span');
+    checkboxCheckmark.classList.add('checkmark');
+    taskCheckbox.append(inputCheckbox);
+    taskCheckbox.append(checkboxCheckmark);
     let taskInput = document.createElement('input');
     taskInput.classList.add('task__value');
     taskInput.setAttribute('value', e.value);

@@ -467,6 +467,68 @@ main {
     width: 100%;
 }
 
+.task__checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.task__checkbox .task__checkbox-input {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+}
+
+.checkmark {
+    position: absolute;
+    top: 9px;
+    left: 13px;
+    height: 25px;
+    width: 25px;
+    background-color: #5e5e5e;
+    border-radius: 15px;
+}
+
+.task__checkbox:hover .task__checkbox-input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.task__checkbox .task__checkbox-input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s ease-out;
+}
+
+.task__checkbox .task__checkbox-input:checked ~ .checkmark:after {
+    visibility: visible;
+    opacity: 1;
+}
+
+.task__checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
 .task .task__value {
     color: #fafafa;;
     font-size: 20px;
@@ -475,53 +537,6 @@ main {
     padding: 10px 0 10px 20px;
     margin-left: 5px;
     width: 100%;
-}
-
-.task .task__checkbox {
-    margin: 11px 0 0 12px;
-    cursor: pointer;
-    content: "";
-}
-
-.task .task__checkbox:before {
-    content: '';
-    position: absolute;
-    top: 9px;
-    left: 8px;
-    width: 18px;
-    height: 18px;
-    z-index: 0;
-    border: 2px solid #A9ABAE;
-    border-radius: 1px;
-    margin-top: 2px;
-    -webkit-transition: .2s;
-    -moz-transition: .2s;
-    -o-transition: .2s;
-    -ms-transition: .2s;
-    transition: .2s;
-    background: #222221;
-}
-
-.task .task__checkbox:checked:before {
-    top: 2px;
-    left: 1px;
-    width: 13px;
-    height: 22px;
-    border-top: 2px solid transparent;
-    border-left: 2px solid transparent;
-    border-right: 2px solid #35ac19;
-    border-bottom: 2px solid #35ac19;
-    -webkit-transform: rotate(40deg);
-    -moz-transform: rotate(40deg);
-    -ms-transform: rotate(40deg);
-    -o-transform: rotate(40deg);
-    transform: rotate(40deg);
-    transform-origin: 100% 100%;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-origin: 100% 100%;
-    -moz-transform-origin: 100% 100%;
-    -ms-transform-origin: 100% 100%;
-    -o-transform-origin: 100% 100%;
 }
 
 .task input:focus, .task {
